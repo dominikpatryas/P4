@@ -6,51 +6,54 @@
         xmlns:local="clr-namespace:Kino"
         mc:Ignorable="d"
         Title="MainWindow" Height="800" Width="1000">
-    <Grid Margin="0,0,-0.4,9.4">
-        <Grid x:Name="grid1" Margin="0,0,-0.4,260.4">
-            <TextBox HorizontalAlignment="Left" Height="133" Margin="355,28,0,0" TextWrapping="Wrap" Text="Welcome in our Cinema!&#xD;&#xA;Login or Register to buy a ticket for movie&#xD;&#xA;" VerticalAlignment="Top" Width="249" TextChanged="TextBox_TextChanged"/>
-            <TextBlock HorizontalAlignment="Left" Height="0" Margin="394,125,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="2"/>
+    <Window.Resources>
+        <Style TargetType="Button">
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="0,0,-0.4,9.4" Background="DarkGray">
+        <Grid x:Name="grid1" Margin="10,0,-10,10">
+            <TextBlock  HorizontalAlignment="Left" Height="0" Margin="394,125,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="2"/>
             <Grid x:Name="RLgrid" HorizontalAlignment="Left" Margin="77,214,0,-199" Width="865" RenderTransformOrigin="0.493,0.857" Height="395" VerticalAlignment="Top">
-                <TextBox HorizontalAlignment="Left" Height="23" Margin="72,131,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-                <TextBox HorizontalAlignment="Left" Height="23" Margin="619,154,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-                <TextBox HorizontalAlignment="Left" Height="23" Margin="619,193,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-                <Button Content="Button" HorizontalAlignment="Left" Margin="72,310,0,0" VerticalAlignment="Top" Width="75"/>
-                <Label Content="Register&#xD;&#xA;" HorizontalAlignment="Left" Margin="51,34,0,0" VerticalAlignment="Top" FontFamily="Segoe UI Symbol" FontSize="48" Height="67"/>
-                <Label Content="Login&#xA;" HorizontalAlignment="Left" Margin="619,34,0,0" VerticalAlignment="Top" FontSize="48"/>
-                <TextBox HorizontalAlignment="Left" Height="23" Margin="72,184,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-                <Button Content="Register me&#xD;&#xA;" HorizontalAlignment="Left" Margin="72,244,0,0" VerticalAlignment="Top" Width="75"/>
-                <Button x:Name="button_login" Content="Log in me&#xD;&#xA;" HorizontalAlignment="Left" Margin="635,244,0,0" VerticalAlignment="Top" Width="75" Click="Button_login_Click"/>
+                <Label Content="Register&#xD;&#xA;" HorizontalAlignment="Left" Margin="72,0,0,0" VerticalAlignment="Top" FontFamily="Segoe UI Symbol" FontSize="48" Height="87"/>
+                <Button x:Name="button_register" Content="Register me&#xD;&#xA;" HorizontalAlignment="Left" Margin="125,238,0,0" VerticalAlignment="Top" Width="75" Cursor="Hand" Click="Button_Click"/>
+                <TextBox x:Name="TEXTBOX_password2" HorizontalAlignment="Left" Height="40" Margin="72,171,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" FontSize="24"/>
+                <TextBox x:Name="TEXTBOX_register2" HorizontalAlignment="Left" Height="40" Margin="72,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" TextChanged="TextBox_TextChanged" FontSize="24"/>
+                <Label Content="Register&#xA;" HorizontalAlignment="Left" Margin="72,0,0,0" VerticalAlignment="Top" FontFamily="Segoe UI Symbol" FontSize="48" Height="87"/>
+                <Label Content="Log in&#xA;" HorizontalAlignment="Left" Margin="547,0,0,0" VerticalAlignment="Top" FontFamily="Segoe UI Symbol" FontSize="48" Height="87"/>
 
             </Grid>
+            <StackPanel Margin="1,171,-1.4,66.8">
+                <TextBox x:Name="TEXTBOX_login1" HorizontalAlignment="Left" Height="40" Margin="600,136,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" FontSize="24"/>
+                <TextBox x:Name="TEXTBOX_password1" HorizontalAlignment="Left" Height="40" Margin="600,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" FontSize="24" TextChanged="TEXTBOX_password1_TextChanged"/>
+                <Button x:Name="button_login" Content="Log in me&#xA;" HorizontalAlignment="Right" Margin="0,25,250,0" VerticalAlignment="Top" Width="75" Click="Button_login_Click" Height="36" Cursor="Hand"/>
 
+            </StackPanel>
         </Grid>
-        <Grid>
-            <Grid x:Name="grid2" HorizontalAlignment="Left" Height="600" Margin="24,160,0,0" VerticalAlignment="Top" Width="960">
-                <Label Content="Label" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-                <Label Content="Label" HorizontalAlignment="Left" Margin="70,10,0,0" VerticalAlignment="Top" Width="707"/>
-                <Label Content="Label" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top"/>
-                <Label Content="Label" HorizontalAlignment="Left" Margin="74,100,0,0" VerticalAlignment="Top" Width="707"/>
-                <Label Content="Label" HorizontalAlignment="Left" Margin="10,200,0,0" VerticalAlignment="Top"/>
-                <Label Content="Label" HorizontalAlignment="Left" Margin="74,200,0,0" VerticalAlignment="Top" Width="707"/>
-                <Label Content="Label" HorizontalAlignment="Left" Margin="10,300,0,0" VerticalAlignment="Top"/>
-                <Label Content="Label" HorizontalAlignment="Left" Margin="74,300,0,0" VerticalAlignment="Top" Width="707"/>
-                <Label Content="Label" HorizontalAlignment="Left" Margin="10,400,0,0" VerticalAlignment="Top"/>
-                <Label Content="Label" HorizontalAlignment="Left" Margin="74,400,0,0" VerticalAlignment="Top" Width="707"/>
-                <Label Content="Label" HorizontalAlignment="Left" Margin="10,500,0,0" VerticalAlignment="Top"/>
-                <Label Content="Label" HorizontalAlignment="Left" Margin="74,500,0,0" VerticalAlignment="Top" Width="707"/>
-                <Label Content="Label" HorizontalAlignment="Left" Margin="10,600,0,0" VerticalAlignment="Top"/>
-                <Label Content="Label" HorizontalAlignment="Left" Margin="74,600,0,0" VerticalAlignment="Top" Width="707"/>
-                <Button x:Name="button_movie1" Content="Button" HorizontalAlignment="Left" Margin="839,13,0,0" VerticalAlignment="Top" Width="75" Click="Button_movie1_Click"/>
-                <Button x:Name="button_movie2" Content="Button" HorizontalAlignment="Left" Margin="839,100,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.525,2.812"/>
-                <Button x:Name="button_movie3" Content="Button" HorizontalAlignment="Left" Margin="839,200,0,0" VerticalAlignment="Top" Width="75"/>
-                <Button x:Name="button_movie4" Content="Button" HorizontalAlignment="Left" Margin="839,300,0,0" VerticalAlignment="Top" Width="75"/>
-                <Button x:Name="button_movie5" Content="Button" HorizontalAlignment="Left" Margin="839,400,0,0" VerticalAlignment="Top" Width="75"/>
-                <Button x:Name="button_movie6" Content="Button" HorizontalAlignment="Left" Margin="839,500,0,0" VerticalAlignment="Top" Width="75"/>
-                <!-- <Image x:Name="img1" HorizontalAlignment="Left" Height="300" Width="300" Margin="0,30,0,0" VerticalAlignment="Top" /> -->
-                <!-- <Image x:Name="img2" HorizontalAlignment="Left" Height="300" Width="300" Margin="320,30,0,0" VerticalAlignment="Top" /> -->
-                <!-- <Image x:Name="img3" HorizontalAlignment="Left" Height="300" Width="300" Margin="640,30,0,0" VerticalAlignment="Top" /> -->
-            </Grid>
-            <Label Content="Click on any to get more informations!&#xD;&#xA;" HorizontalAlignment="Left" Margin="305,3,0,0" VerticalAlignment="Top" Height="152" Width="397"/>
+        <Grid x:Name="grid2" Visibility="Collapsed" HorizontalAlignment="Left" Height="600" Margin="24,160,0,0" VerticalAlignment="Top" Width="960">
+            <Label Content="Label" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+            <Label Content="Label" HorizontalAlignment="Left" Margin="70,10,0,0" VerticalAlignment="Top" Width="707"/>
+            <Label Content="Label" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top"/>
+            <Label Content="Label" HorizontalAlignment="Left" Margin="74,100,0,0" VerticalAlignment="Top" Width="707"/>
+            <Label Content="Label" HorizontalAlignment="Left" Margin="10,200,0,0" VerticalAlignment="Top"/>
+            <Label Content="Label" HorizontalAlignment="Left" Margin="74,200,0,0" VerticalAlignment="Top" Width="707"/>
+            <Label Content="Label" HorizontalAlignment="Left" Margin="10,300,0,0" VerticalAlignment="Top"/>
+            <Label Content="Label" HorizontalAlignment="Left" Margin="74,300,0,0" VerticalAlignment="Top" Width="707"/>
+            <Label Content="Label" HorizontalAlignment="Left" Margin="10,400,0,0" VerticalAlignment="Top"/>
+            <Label Content="Label" HorizontalAlignment="Left" Margin="74,400,0,0" VerticalAlignment="Top" Width="707"/>
+            <Label Content="Label" HorizontalAlignment="Left" Margin="10,500,0,0" VerticalAlignment="Top"/>
+            <Label Content="Label" HorizontalAlignment="Left" Margin="74,500,0,0" VerticalAlignment="Top" Width="707"/>
+            <Label Content="Label" HorizontalAlignment="Left" Margin="10,600,0,0" VerticalAlignment="Top"/>
+            <Label Content="Label" HorizontalAlignment="Left" Margin="74,600,0,0" VerticalAlignment="Top" Width="707"/>
+            <Button x:Name="button_movie1" Content="Button" HorizontalAlignment="Left" Margin="839,13,0,0" VerticalAlignment="Top" Width="75" Click="Button_movie1_Click"/>
+            <Button x:Name="button_movie2" Content="Button" HorizontalAlignment="Left" Margin="839,100,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.525,2.812"/>
+            <Button x:Name="button_movie3" Content="Button" HorizontalAlignment="Left" Margin="839,200,0,0" VerticalAlignment="Top" Width="75"/>
+            <Button x:Name="button_movie4" Content="Button" HorizontalAlignment="Left" Margin="839,300,0,0" VerticalAlignment="Top" Width="75"/>
+            <Button x:Name="button_movie5" Content="Button" HorizontalAlignment="Left" Margin="839,400,0,0" VerticalAlignment="Top" Width="75"/>
+            <Button x:Name="button_movie6" Content="Button" HorizontalAlignment="Left" Margin="839,500,0,0" VerticalAlignment="Top" Width="75"/>
+            <!-- <Image x:Name="img1" HorizontalAlignment="Left" Height="300" Width="300" Margin="0,30,0,0" VerticalAlignment="Top" /> -->
+            <!-- <Image x:Name="img2" HorizontalAlignment="Left" Height="300" Width="300" Margin="320,30,0,0" VerticalAlignment="Top" /> -->
+            <!-- <Image x:Name="img3" HorizontalAlignment="Left" Height="300" Width="300" Margin="640,30,0,0" VerticalAlignment="Top" /> -->
         </Grid>
     </Grid>
 </Window>

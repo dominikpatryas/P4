@@ -15,7 +15,8 @@ using System.Windows.Shapes;
 
 namespace Kino
 {
-    using Kino.NewFolder1;
+    using System.Data.SqlClient;
+
     using Kino.windows;
 
     /// <summary>
@@ -23,46 +24,61 @@ namespace Kino
     /// </summary>
     public partial class MainWindow : Window
     {
+        Sql databaseSql = new Sql();
+
         public MainWindow()
         {
             InitializeComponent();
-                RLgrid.Background = new SolidColorBrush(Color.FromArgb(50, 100, 150, 100));
+            RLgrid.Background = new SolidColorBrush(Color.FromArgb(50, 100, 150, 100));
             grid2.Visibility = Visibility.Hidden;
-
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        // LOGOWANIE
+        private void Button_login_Click(object sender, RoutedEventArgs e)
         {
-        }
-
-        private void Button1_2window_Click(object sender, RoutedEventArgs e)
-        {
+            var textbox_login_input = TEXTBOX_login1.Text;
+            var textbox_password_input = TEXTBOX_password1.Text;
             
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            
-            _4 fourthwindow = new _4();
-            
-            
-             fourthwindow.Show();
-             grid1.Visibility = Visibility.Hidden;
-            
+           var res = databaseSql.Login(textbox_login_input, textbox_password_input);
+            if (res == true)
+            {
+                grid1.Visibility = Visibility.Hidden;
+                grid2.Visibility = Visibility.Visible;
+            }
+            else MessageBox.Show("Invalid username or password!");
         }
 
         private void Button_movie1_Click(object sender, RoutedEventArgs e)
         {
-            _4 fourthwindow = new _4();
-            fourthwindow.Show();
-           
+
+        }
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var textbox_register_input = TEXTBOX_register2.Text;
+            var textbox_password_input = TEXTBOX_password2.Text;
+
+            var res = databaseSql.Register(textbox_register_input, textbox_password_input);
+            if (res == true)
+            {
+                grid1.Visibility = Visibility.Hidden;
+                grid2.Visibility = Visibility.Visible;
+            }
+            else MessageBox.Show("Invalid username or password!");
+        }
+
+        private void TextBox_TextChanged(object sender, RoutedEventArgs e)
+        {
 
         }
 
-        private void Button_login_Click(object sender, RoutedEventArgs e)
+        private void TEXTBOX_password1_TextChanged(object sender, RoutedEventArgs e)
         {
-            grid1.Visibility = Visibility.Hidden;
-            grid2.Visibility = Visibility.Visible;
+
+        }
+
+        private void button_register_Click(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }
