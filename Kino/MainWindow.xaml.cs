@@ -16,6 +16,8 @@ using System.Windows.Shapes;
 namespace Kino
 {
     using System.Data.SqlClient;
+    using System.Reflection;
+    using System.Runtime.Remoting.Channels;
 
     using Kino.windows;
 
@@ -29,28 +31,87 @@ namespace Kino
         public MainWindow()
         {
             InitializeComponent();
-            RLgrid.Background = new SolidColorBrush(Color.FromArgb(50, 100, 150, 100));
             grid2.Visibility = Visibility.Hidden;
+            ImageBrush myBrush = new ImageBrush();
+            Image image = new Image();
+            image.Source = new BitmapImage(
+                new Uri(
+                    "C:/Users/domin/Pictures/cinema1.jpg"));
+            myBrush.ImageSource = image.Source;
+            grid2.Background = myBrush;
         }
 
         // LOGOWANIE
         private void Button_login_Click(object sender, RoutedEventArgs e)
         {
-            var textbox_login_input = TEXTBOX_login1.Text;
+            MainWindow m = new MainWindow();
+
+            var textbox_login_input = TEXTBOX_login1.Text; 
             var textbox_password_input = TEXTBOX_password1.Text;
             
-           var res = databaseSql.Login(textbox_login_input, textbox_password_input);
+           var res = databaseSql.Login(textbox_login_input, textbox_password_input, m);
             if (res == true)
             {
                 grid1.Visibility = Visibility.Hidden;
                 grid2.Visibility = Visibility.Visible;
+                loadMovies();
+
             }
+
+            
+
             else MessageBox.Show("Invalid username or password!");
+        }
+
+        private void loadMovies()
+        {
+            if (grid2.Visibility == Visibility.Visible)
+            {
+                var res = databaseSql;
+                navlabel.Content = "Dostępne filmy:";
+                navlabel.FontSize = 30;
+
+                McDataGrid.AutoGenerateColumns = false;
+                DataGridTextColumn IDcol = new DataGridTextColumn();
+                DataGridTextColumn Nazwacol = new DataGridTextColumn();
+                DataGridTextColumn Gatunekcol = new DataGridTextColumn();
+                DataGridTextColumn Rokcol = new DataGridTextColumn();
+
+                Binding b = new Binding("ID");
+                IDcol.Binding = b;
+                IDcol.Header = "ID";
+                McDataGrid.Columns.Add(IDcol);
+
+                b = new Binding("NazwaFilmu");
+                Nazwacol.Binding = b;
+                Nazwacol.Header = "Nazwa Filmu";
+                McDataGrid.ColumnWidth = 250;
+                McDataGrid.Columns.Add(Nazwacol);
+
+                b = new Binding("GatunekFilmu");
+                Gatunekcol.Binding = b;
+                Gatunekcol.Header = "Gatunek Filmu";
+                McDataGrid.ColumnWidth = 200;
+                McDataGrid.Columns.Add(Gatunekcol);
+
+                b = new Binding("RokProdukcji");
+                Rokcol.Binding = b;
+                Rokcol.Header = "Rok Produkcji";
+                McDataGrid.ColumnWidth = 100;
+                McDataGrid.Columns.Add(Rokcol);
+
+                
+                McDataGrid.ItemsSource = databaseSql.sqlloadMovies();
+                McDataGrid.MaxColumnWidth = 298;
+                McDataGrid.IsReadOnly = true;
+               
+            }
         }
 
         private void Button_movie1_Click(object sender, RoutedEventArgs e)
         {
-
+            _4 x = new _4();
+            x.Show();
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -66,19 +127,22 @@ namespace Kino
             else MessageBox.Show("Invalid username or password!");
         }
 
-        private void TextBox_TextChanged(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void TEXTBOX_password1_TextChanged(object sender, RoutedEventArgs e)
-        {
-
-        }
+       
 
         private void button_register_Click(object sender, RoutedEventArgs e)
         {
             
         }
+        private void McDataGrid_OnLoaded(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void loginCheckbox_Click(object sender, RoutedEventArgs e)
+        {
+        }
+
     }
+
+
+
 }

@@ -12,48 +12,124 @@
     </Window.Resources>
 
     <Grid Margin="0,0,-0.4,9.4" Background="DarkGray">
-        <Grid x:Name="grid1" Margin="10,0,-10,10">
+        <Grid x:Name="grid1" Visibility="Visible" Margin="10,0,-10,10">
             <TextBlock  HorizontalAlignment="Left" Height="0" Margin="394,125,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="2"/>
             <Grid x:Name="RLgrid" HorizontalAlignment="Left" Margin="77,214,0,-199" Width="865" RenderTransformOrigin="0.493,0.857" Height="395" VerticalAlignment="Top">
                 <Label Content="Register&#xD;&#xA;" HorizontalAlignment="Left" Margin="72,0,0,0" VerticalAlignment="Top" FontFamily="Segoe UI Symbol" FontSize="48" Height="87"/>
                 <Button x:Name="button_register" Content="Register me&#xD;&#xA;" HorizontalAlignment="Left" Margin="125,238,0,0" VerticalAlignment="Top" Width="75" Cursor="Hand" Click="Button_Click"/>
                 <TextBox x:Name="TEXTBOX_password2" HorizontalAlignment="Left" Height="40" Margin="72,171,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" FontSize="24"/>
-                <TextBox x:Name="TEXTBOX_register2" HorizontalAlignment="Left" Height="40" Margin="72,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" TextChanged="TextBox_TextChanged" FontSize="24"/>
+                <TextBox x:Name="TEXTBOX_register2" HorizontalAlignment="Left" Height="40" Margin="72,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" FontSize="24"/>
                 <Label Content="Register&#xA;" HorizontalAlignment="Left" Margin="72,0,0,0" VerticalAlignment="Top" FontFamily="Segoe UI Symbol" FontSize="48" Height="87"/>
                 <Label Content="Log in&#xA;" HorizontalAlignment="Left" Margin="547,0,0,0" VerticalAlignment="Top" FontFamily="Segoe UI Symbol" FontSize="48" Height="87"/>
 
             </Grid>
             <StackPanel Margin="1,171,-1.4,66.8">
                 <TextBox x:Name="TEXTBOX_login1" HorizontalAlignment="Left" Height="40" Margin="600,136,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" FontSize="24"/>
-                <TextBox x:Name="TEXTBOX_password1" HorizontalAlignment="Left" Height="40" Margin="600,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" FontSize="24" TextChanged="TEXTBOX_password1_TextChanged"/>
-                <Button x:Name="button_login" Content="Log in me&#xA;" HorizontalAlignment="Right" Margin="0,25,250,0" VerticalAlignment="Top" Width="75" Click="Button_login_Click" Height="36" Cursor="Hand"/>
-
+                <TextBox x:Name="TEXTBOX_password1" HorizontalAlignment="Left" Height="40" Margin="600,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" FontSize="24"/>
+                <Button x:Name="button_login" Content="Log in me&#xA;" HorizontalAlignment="Right" Margin="0,25,315.6,0" VerticalAlignment="Top" Width="75" Click="Button_login_Click" Height="36" Cursor="Hand"/>
+                <CheckBox
+                    Name="loginCheckbox"
+                    Content="Jestem sprzedawcą"
+                    HorizontalAlignment="Left"
+                    Margin="700,-25,0,0"
+                    VerticalAlignment="Top" 
+                    />
             </StackPanel>
         </Grid>
-        <Grid x:Name="grid2" Visibility="Collapsed" HorizontalAlignment="Left" Height="600" Margin="24,160,0,0" VerticalAlignment="Top" Width="960">
-            <Label Content="Label" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-            <Label Content="Label" HorizontalAlignment="Left" Margin="70,10,0,0" VerticalAlignment="Top" Width="707"/>
-            <Label Content="Label" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top"/>
-            <Label Content="Label" HorizontalAlignment="Left" Margin="74,100,0,0" VerticalAlignment="Top" Width="707"/>
-            <Label Content="Label" HorizontalAlignment="Left" Margin="10,200,0,0" VerticalAlignment="Top"/>
-            <Label Content="Label" HorizontalAlignment="Left" Margin="74,200,0,0" VerticalAlignment="Top" Width="707"/>
-            <Label Content="Label" HorizontalAlignment="Left" Margin="10,300,0,0" VerticalAlignment="Top"/>
-            <Label Content="Label" HorizontalAlignment="Left" Margin="74,300,0,0" VerticalAlignment="Top" Width="707"/>
-            <Label Content="Label" HorizontalAlignment="Left" Margin="10,400,0,0" VerticalAlignment="Top"/>
-            <Label Content="Label" HorizontalAlignment="Left" Margin="74,400,0,0" VerticalAlignment="Top" Width="707"/>
-            <Label Content="Label" HorizontalAlignment="Left" Margin="10,500,0,0" VerticalAlignment="Top"/>
-            <Label Content="Label" HorizontalAlignment="Left" Margin="74,500,0,0" VerticalAlignment="Top" Width="707"/>
-            <Label Content="Label" HorizontalAlignment="Left" Margin="10,600,0,0" VerticalAlignment="Top"/>
-            <Label Content="Label" HorizontalAlignment="Left" Margin="74,600,0,0" VerticalAlignment="Top" Width="707"/>
-            <Button x:Name="button_movie1" Content="Button" HorizontalAlignment="Left" Margin="839,13,0,0" VerticalAlignment="Top" Width="75" Click="Button_movie1_Click"/>
-            <Button x:Name="button_movie2" Content="Button" HorizontalAlignment="Left" Margin="839,100,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.525,2.812"/>
-            <Button x:Name="button_movie3" Content="Button" HorizontalAlignment="Left" Margin="839,200,0,0" VerticalAlignment="Top" Width="75"/>
-            <Button x:Name="button_movie4" Content="Button" HorizontalAlignment="Left" Margin="839,300,0,0" VerticalAlignment="Top" Width="75"/>
-            <Button x:Name="button_movie5" Content="Button" HorizontalAlignment="Left" Margin="839,400,0,0" VerticalAlignment="Top" Width="75"/>
-            <Button x:Name="button_movie6" Content="Button" HorizontalAlignment="Left" Margin="839,500,0,0" VerticalAlignment="Top" Width="75"/>
-            <!-- <Image x:Name="img1" HorizontalAlignment="Left" Height="300" Width="300" Margin="0,30,0,0" VerticalAlignment="Top" /> -->
-            <!-- <Image x:Name="img2" HorizontalAlignment="Left" Height="300" Width="300" Margin="320,30,0,0" VerticalAlignment="Top" /> -->
-            <!-- <Image x:Name="img3" HorizontalAlignment="Left" Height="300" Width="300" Margin="640,30,0,0" VerticalAlignment="Top" /> -->
+        <Grid x:Name="grid2" Visibility="hidden" Background="AliceBlue" Margin="10,0,-10,10">
+            <Label x:Name="navlabel" Content="LOGO/WITAMY" HorizontalAlignment="Left" Margin="41,37,0,0" VerticalAlignment="Top" Width="407"/>
+
+
+            <DataGrid x:Name="McDataGrid" Margin="222,57,200.6,325" AutoGenerateColumns="True" Loaded="McDataGrid_OnLoaded"  HorizontalScrollBarVisibility="Hidden"
+    VerticalScrollBarVisibility="Hidden">
+                <DataGrid.Columns>
+
+                    <!-- <DataGridTextColumn Binding="{Binding ID}" Header="ID" IsReadOnly="True"/> -->
+                    <!-- <DataGridTextColumn Header="Nazwa Filmu" Width="140" Binding="{Binding NazwaFilmu}"   > -->
+                    <!--     <DataGridTextColumn.ElementStyle> -->
+                    <!--         <Style TargetType="TextBlock"> -->
+                    <!--             <Setter Property="TextWrapping" Value="Wrap"/> -->
+                    <!--         </Style> -->
+                    <!--     </DataGridTextColumn.ElementStyle> -->
+                    <!--     <DataGridTextColumn.EditingElementStyle> -->
+                    <!--         <Style TargetType="TextBox"> -->
+                    <!--             <Setter Property="Foreground" Value="Blue"/> -->
+                    <!--         </Style> -->
+                    <!--     </DataGridTextColumn.EditingElementStyle> -->
+                    <!-- </DataGridTextColumn> -->
+
+                    <!-- <DataGridTemplateColumn Header="Gatunek"  Width="200"> -->
+                    <!--     <DataGridTemplateColumn.CellTemplate> -->
+                    <!--         <DataTemplate> -->
+                    <!--             <TextBlock Text="{Binding GatunekFilmu }" Margin="4"/> -->
+                    <!--         </DataTemplate> -->
+                    <!--     </DataGridTemplateColumn.CellTemplate> -->
+                    <!--     <DataGridTemplateColumn.CellEditingTemplate> -->
+                    <!--         <DataTemplate> -->
+                    <!--             <DatePicker SelectedDate="{Binding DOB, Mode=TwoWay}" /> -->
+                    <!--         </DataTemplate> -->
+                    <!--     </DataGridTemplateColumn.CellEditingTemplate> -->
+                    <!-- </DataGridTemplateColumn> -->
+
+
+
+
+                    <!-- -->
+                    <!-- <DataGridTextColumn Header="ID" Width="100" Binding="{Binding ID}" ></DataGridTextColumn> -->
+                    <!-- <DataGridTextColumn Header="Nazwa Filmu" Width="100" Binding="{Binding NazwaFilmu}" ></DataGridTextColumn> -->
+                    <!-- <DataGridTextColumn Header="Gatunek Filmu" Width="100" Binding="{Binding GatunekFilmu}" ></DataGridTextColumn> -->
+                    <!-- <DataGridTextColumn Header="Rok produkcji" Width="100" Binding="{Binding RokProdukcji}" ></DataGridTextColumn> -->
+
+
+                    <!--     <DataGridTextColumn.ElementStyle> -->
+                    <!--         <Style TargetType="TextBlock"> -->
+                    <!--             <Setter Property="TextWrapping" Value="Wrap"/> -->
+                    <!--         </Style> -->
+                    <!--     </DataGridTextColumn.ElementStyle> -->
+                    <!--     <DataGridTextColumn.EditingElementStyle> -->
+                    <!--         <Style TargetType="TextBox"> -->
+                    <!--             <Setter Property="Foreground" Value="Blue"/> -->
+                    <!--         </Style> -->
+                    <!--     </DataGridTextColumn.EditingElementStyle> -->
+                    
+                    <!-- <DataGridCheckBoxColumn Header="Opis Filmu" Binding="{Binding IsMVP}" IsThreeState="True" /> -->
+                </DataGrid.Columns>
+
+                <DataGrid.RowDetailsTemplate>
+                    <DataTemplate>
+                        <Border BorderThickness="0" Background="Beige" Padding="10">
+                            <Grid Margin="5,0,0,0" MinWidth="650" HorizontalAlignment="Left">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="125"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="125"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Text="Opis Filmu" Margin="10,0,0,0" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                                <TextBlock Margin="3" Width="250" Height="70" Grid.Row="0" Grid.Column="1" Text="{Binding Path=OpisFilmu}" TextWrapping="WrapWithOverflow" />
+                                
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </DataGrid.RowDetailsTemplate>
+            </DataGrid>
+
+
+
+
+
+
+
+
+
         </Grid>
+
     </Grid>
 </Window>

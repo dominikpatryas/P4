@@ -15,8 +15,3 @@ C:\Users\domin\Desktop\Projekty VS\Kino\Kino\obj\Debug\Kino.exe
 C:\Users\domin\Desktop\Projekty VS\Kino\Kino\obj\Debug\Kino.pdb
 C:\Users\domin\Desktop\Projekty VS\Kino\Kino\obj\Debug\windows\4.g.cs
 C:\Users\domin\Desktop\Projekty VS\Kino\Kino\obj\Debug\windows\4.baml
-C:\Users\domin\Desktop\Projekty VS\Kino\Kino\bin\Debug\EntityFramework.dll
-C:\Users\domin\Desktop\Projekty VS\Kino\Kino\bin\Debug\EntityFramework.SqlServer.dll
-C:\Users\domin\Desktop\Projekty VS\Kino\Kino\bin\Debug\EntityFramework.xml
-C:\Users\domin\Desktop\Projekty VS\Kino\Kino\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\domin\Desktop\Projekty VS\Kino\Kino\obj\Debug\Kino.csproj.CopyComplete
