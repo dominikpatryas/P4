@@ -31,6 +31,8 @@ namespace Kino
         public MainWindow()
         {
             InitializeComponent();
+            grid1.Visibility = Visibility.Visible;
+            WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             grid2.Visibility = Visibility.Hidden;
             ImageBrush myBrush = new ImageBrush();
             Image image = new Image();
@@ -44,23 +46,37 @@ namespace Kino
         // LOGOWANIE
         private void Button_login_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow m = new MainWindow();
 
             var textbox_login_input = TEXTBOX_login1.Text; 
             var textbox_password_input = TEXTBOX_password1.Text;
-            
-           var res = databaseSql.Login(textbox_login_input, textbox_password_input, m);
-            if (res == true)
+
+            if (loginCheckbox.IsChecked.Value)
             {
+                databaseSql.Login_sprzedawca(textbox_login_input, textbox_password_input);
+
                 grid1.Visibility = Visibility.Hidden;
                 grid2.Visibility = Visibility.Visible;
+
                 loadMovies();
-
             }
-
             
 
-            else MessageBox.Show("Invalid username or password!");
+            if (!loginCheckbox.IsChecked.Value)
+            {
+                var res = databaseSql.Login(textbox_login_input, textbox_password_input);
+
+                if (res == true)
+                {
+                    grid1.Visibility = Visibility.Hidden;
+                    grid2.Visibility = Visibility.Visible;
+                    ButtonAddFilm.Visibility = Visibility.Hidden;
+                    loadMovies();
+                    
+                }
+
+                else MessageBox.Show("Invalid username or password!");
+            }
+          
         }
 
         private void loadMovies()
@@ -68,7 +84,7 @@ namespace Kino
             if (grid2.Visibility == Visibility.Visible)
             {
                 var res = databaseSql;
-                navlabel.Content = "Dostępne filmy:";
+                navlabel.Content = "";
                 navlabel.FontSize = 30;
 
                 McDataGrid.AutoGenerateColumns = false;
@@ -77,7 +93,7 @@ namespace Kino
                 DataGridTextColumn Gatunekcol = new DataGridTextColumn();
                 DataGridTextColumn Rokcol = new DataGridTextColumn();
 
-                Binding b = new Binding("ID");
+                Binding b =  new Binding("ID");
                 IDcol.Binding = b;
                 IDcol.Header = "ID";
                 McDataGrid.Columns.Add(IDcol);
@@ -100,18 +116,15 @@ namespace Kino
                 McDataGrid.ColumnWidth = 100;
                 McDataGrid.Columns.Add(Rokcol);
 
-                
                 McDataGrid.ItemsSource = databaseSql.sqlloadMovies();
                 McDataGrid.MaxColumnWidth = 298;
                 McDataGrid.IsReadOnly = true;
-               
             }
         }
 
         private void Button_movie1_Click(object sender, RoutedEventArgs e)
         {
-            _4 x = new _4();
-            x.Show();
+            
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -127,7 +140,10 @@ namespace Kino
             else MessageBox.Show("Invalid username or password!");
         }
 
-       
+        private void loginCheckbox_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
 
         private void button_register_Click(object sender, RoutedEventArgs e)
         {
@@ -135,12 +151,26 @@ namespace Kino
         }
         private void McDataGrid_OnLoaded(object sender, RoutedEventArgs e)
         {
+
         }
+
+        
 
         private void loginCheckbox_Click(object sender, RoutedEventArgs e)
         {
         }
 
+        private void McDataGrid_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            _4 x = new _4();
+            x.Show();
+        }
+
+        private void ButtonAddFilm_Click(object sender, RoutedEventArgs e)
+        {
+            DodajFilm df = new DodajFilm();
+            df.Show();
+        }
     }
 
 

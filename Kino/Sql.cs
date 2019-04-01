@@ -9,12 +9,13 @@ namespace Kino
 {
     using System.Windows;
 
-    public class Sql
+    public class Sql : ISql
     {
+
         private readonly static string conStr =
             "Data Source=LAPTOP-HJ934Q3G;Initial Catalog=Kino;Integrated Security=True";
 
-        public bool Login(string username, string password, MainWindow mw)
+        public bool Login(string username, string password)
         {
             using (SqlConnection con = new SqlConnection(conStr))
             {
@@ -22,12 +23,20 @@ namespace Kino
                     
                 var res = Convert.ToInt32(new SqlCommand($"SELECT COUNT(1) from Klient WHERE Login = '{username}' AND Password = '{password}'", con).ExecuteScalar());
 
-                if (mw.loginCheckbox.IsChecked == true)
-                {
-                    var res2 = Convert.ToInt32(new SqlCommand($"SELECT COUNT(1) from Sprzedawcy WHERE Login = '{username}' AND Password = '{password}'", con).ExecuteScalar());
-                    if (res2 == 1) MessageBox.Show("xd");
-                }
-                
+                if (res == 1) return true;
+                else return false;
+
+            }
+        }
+
+        public bool Login_sprzedawca(string username, string password)
+        {
+            using (SqlConnection con = new SqlConnection(conStr))
+            {
+                con.Open();
+
+                var res = Convert.ToInt32(new SqlCommand($"SELECT COUNT(1) from Sprzedawcy WHERE Login = '{username}' AND Password = '{password}'", con).ExecuteScalar());
+
                 if (res == 1) return true;
                 else return false;
 
@@ -74,7 +83,7 @@ namespace Kino
             {
                 con.Open();
 
-                var size =Convert.ToInt32(new SqlCommand($"SELECT COUNT(*) from Film", con).ExecuteScalar());
+                var size = Convert.ToInt32(new SqlCommand($"SELECT COUNT(*) from Film", con).ExecuteScalar());
 
                 var lista = new List<Film>();
                 
@@ -87,13 +96,32 @@ namespace Kino
                     var c = Convert.ToInt32(new SqlCommand($"SELECT RokProdukcji from Film WHERE ID = {i}", con).ExecuteScalar());
                     
                     var d = new SqlCommand($"SELECT OpisFilmu from Film WHERE ID = {i}", con).ExecuteScalar().ToString();
-                    
-                    Film film = new Film(i ,a, b, c, d);
+
+                    var e = Convert.ToDateTime( new SqlCommand($"SELECT CzasFilmu from Film WHERE ID = {i}", con).ExecuteScalar());
+
+
+                    Film film = new Film(i ,a, b, c, d, e);
                     
                     lista.Add(film);
                 }
                 
                 return lista;
+            }
+        }
+
+        public void AddMovie(string nazwa, string gatunek, int rok, string opis, string data)
+        {
+            using (SqlConnection con = new SqlConnection(
+                "Data Source=LAPTOP-HJ934Q3G;Initial Catalog=Kino;Integrated Security=True"))
+            {
+                con.Open();
+                var dat = new SqlCommand($"Insert into Film(CzasFilmu) Values({data})",con).ExecuteNonQuery();
+
+                if (dat == 1)
+                {
+                    MessageBox.Show("Udalo sie");
+                }
+                else MessageBox.Show("lipa");
             }
         }
     }

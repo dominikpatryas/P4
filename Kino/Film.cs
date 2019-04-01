@@ -20,15 +20,19 @@ namespace Kino
 
         public string OpisFilmu { get; set; }
 
-        public Film(int iD, string nazwaFilmu, string gatunekFilmu, int rokProdukcji, string opisFilmu)
+        public DateTime CzasFilmu { get; set; }
+
+
+        public Film(int iD, string nazwaFilmu, string gatunekFilmu, int rokProdukcji, string opisFilmu, DateTime czasFilmu)
         {
             ID = iD;
             NazwaFilmu = nazwaFilmu;
             GatunekFilmu = gatunekFilmu;
             RokProdukcji = rokProdukcji;
             OpisFilmu = opisFilmu;
+            CzasFilmu = czasFilmu;
 
-          
+
         }
     }
 }
