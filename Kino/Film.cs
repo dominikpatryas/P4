@@ -20,10 +20,10 @@ namespace Kino
 
         public string OpisFilmu { get; set; }
 
-        public DateTime CzasFilmu { get; set; }
+        public string CzasFilmu { get; set; }
 
 
-        public Film(int iD, string nazwaFilmu, string gatunekFilmu, int rokProdukcji, string opisFilmu, DateTime czasFilmu)
+        public Film(int iD, string nazwaFilmu, string gatunekFilmu, int rokProdukcji, string opisFilmu, string czasFilmu)
         {
             ID = iD;
             NazwaFilmu = nazwaFilmu;
@@ -31,8 +31,6 @@ namespace Kino
             RokProdukcji = rokProdukcji;
             OpisFilmu = opisFilmu;
             CzasFilmu = czasFilmu;
-
-
         }
     }
 }

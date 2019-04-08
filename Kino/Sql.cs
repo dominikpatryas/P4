@@ -97,7 +97,7 @@ namespace Kino
                     
                     var d = new SqlCommand($"SELECT OpisFilmu from Film WHERE ID = {i}", con).ExecuteScalar().ToString();
 
-                    var e = Convert.ToDateTime( new SqlCommand($"SELECT CzasFilmu from Film WHERE ID = {i}", con).ExecuteScalar());
+                    var e = new SqlCommand($"SELECT CzasFilmu from Film WHERE ID = {i}", con).ExecuteScalar().ToString();
 
 
                     Film film = new Film(i ,a, b, c, d, e);
@@ -109,19 +109,20 @@ namespace Kino
             }
         }
 
-        public void AddMovie(string nazwa, string gatunek, int rok, string opis, string data)
+        public void AddMovie(string nazwa, string gatunek, int rok, string opis, DateTime data)
         {
-            using (SqlConnection con = new SqlConnection(
-                "Data Source=LAPTOP-HJ934Q3G;Initial Catalog=Kino;Integrated Security=True"))
+            using (SqlConnection con = new SqlConnection("Data Source=LAPTOP-HJ934Q3G;Initial Catalog=Kino;Integrated Security=True"))
             {
-                con.Open();
-                var dat = new SqlCommand($"Insert into Film(CzasFilmu) Values({data})",con).ExecuteNonQuery();
+                string q1 = $"Insert into Film(NazwaFilmu, GatunekFilmu, RokProdukcji, OpisFilmu, CzasFilmu) Values('{nazwa}', '{gatunek}','{rok}','{opis}','{data}')";
 
-                if (dat == 1)
+                con.Open();
+                var query = (int)new SqlCommand(q1, con).ExecuteNonQuery();
+
+                if (query == 1)
                 {
-                    MessageBox.Show("Udalo sie");
+                    MessageBox.Show("ok");
                 }
-                else MessageBox.Show("lipa");
+                else MessageBox.Show("error");
             }
         }
     }

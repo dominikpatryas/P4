@@ -8,15 +8,20 @@
         mc:Ignorable="d"
         Title="DodajFilm" Height="450" Width="800">
     <Grid>
-        <TextBox x:Name="textbox_nazwa"  HorizontalAlignment="Left" Height="40" Margin="66,58,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300"/>
-        <TextBox x:Name="textbox_gatunek" HorizontalAlignment="Left" Height="40" Margin="66,102,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="300"/>
-        <TextBox x:Name="textbox_rok" HorizontalAlignment="Left" Height="40" Margin="66,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300"/>
-        <TextBox x:Name="textbox_opis" HorizontalAlignment="Left" Height="132" Margin="66,190,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300"/>
+        <TextBox x:Name="textbox_nazwa"  HorizontalAlignment="Left" Height="40" Margin="189,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300"/>
+        <TextBox x:Name="textbox_gatunek" HorizontalAlignment="Left" Height="40" Margin="189,100,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="300"/>
+        <TextBox x:Name="textbox_rok" HorizontalAlignment="Left" Height="40" Margin="189,159,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300"/>
+        <TextBox x:Name="textbox_opis" HorizontalAlignment="Left" Height="132" Margin="189,207,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300"/>
 
 
 
-        <xctk:DateTimePicker x:Name="date_film" HorizontalAlignment="Left" Margin="66,327,0,0" VerticalAlignment="Top" Height="31" Width="227"/>
-        <Button x:Name="button_dodajfilm" Content="Dodaj film!" HorizontalAlignment="Left" Margin="402,339,0,0" VerticalAlignment="Top" Width="75" Click="Button_dodajfilm_Click"/>
+        <xctk:DateTimePicker x:Name="date_film" HorizontalAlignment="Left" Format="ShortDate" Margin="189,363,0,0" VerticalAlignment="Top" Height="31" Width="227"/>
+        <Button x:Name="button_dodajfilm" Content="Dodaj film!" HorizontalAlignment="Left" Margin="490,363,0,0" VerticalAlignment="Top" Width="75" Click="Button_dodajfilm_Click"/>
+        <Label Content="Tytuł" HorizontalAlignment="Left" Margin="25,50,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.326,0.137"/>
+        <Label Content="Gatunek " HorizontalAlignment="Left" Margin="25,115,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.326,0.137"/>
+        <Label Content="Rok produkcji" HorizontalAlignment="Left" Margin="25,173,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.326,0.137"/>
+        <Label Content="Opis filmu" HorizontalAlignment="Left" Margin="25,207,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.326,0.137"/>
+        <Label Content="Data i godzina" HorizontalAlignment="Left" Margin="25,364,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.326,0.137"/>
 
 
 

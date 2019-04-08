@@ -32,7 +32,7 @@ namespace Kino
             var gatunek = textbox_gatunek.Text;
             var opis = textbox_opis.Text;
             var rok = 1222;
-            var time = date_film.ToString();
+            var time = Convert.ToDateTime(date_film.Text);
 
             databaseSql.AddMovie(nazwa,gatunek,rok,opis,time);
         }
