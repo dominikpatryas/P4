@@ -171,6 +171,14 @@ namespace Kino
             DodajFilm df = new DodajFilm();
             df.Show();
         }
+
+        private void RefreshFilm_Click(object sender, RoutedEventArgs e)
+        {
+            McDataGrid.ItemsSource = null;
+            loadMovies();
+        }
+
+        
     }
 
 

@@ -42,7 +42,7 @@
 
 
             <DataGrid x:Name="McDataGrid" Margin="222,57,200.6,325" AutoGenerateColumns="True" Loaded="McDataGrid_OnLoaded" MouseDoubleClick="McDataGrid_OnMouseDoubleClick"  HorizontalScrollBarVisibility="Hidden"
-    VerticalScrollBarVisibility="Hidden">
+    VerticalScrollBarVisibility="Hidden" >
                 <DataGrid.Columns>
 
                 </DataGrid.Columns>
@@ -76,6 +76,7 @@
                 </DataGrid.RowDetailsTemplate>
             </DataGrid>
             <Button x:Name="ButtonAddFilm" Content="Dodaj film" HorizontalAlignment="Left" Margin="817,77,0,0" VerticalAlignment="Top" Width="75" Click="ButtonAddFilm_Click"/>
+            <Button x:Name="RefreshFilm" Content="Refresh" HorizontalAlignment="Left" Margin="855,141,0,0" VerticalAlignment="Top" Width="75" Click="RefreshFilm_Click"/>
 
 
 

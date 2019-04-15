@@ -109,7 +109,7 @@ namespace Kino
             }
         }
 
-        public void AddMovie(string nazwa, string gatunek, int rok, string opis, DateTime data)
+        public void AddMovie(string nazwa, string gatunek, int rok, string opis, string data)
         {
             using (SqlConnection con = new SqlConnection("Data Source=LAPTOP-HJ934Q3G;Initial Catalog=Kino;Integrated Security=True"))
             {
