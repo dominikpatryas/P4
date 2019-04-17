@@ -28,9 +28,14 @@ namespace Kino.windows
 
         protected Image[] List_image = new Image[5];
 
-        public _4()
+        protected Film _film;
+
+        public _4(Film film)
         {
             InitializeComponent();
+            _film = film;
+            Rezerwacja();
+            Image_grid.DataContext = _film;
             Lb1.FontStyle = FontStyles.Italic;
             Lb1.FontSize = 20;
             for (ushort i = 0; i < 30; i++)
@@ -45,6 +50,11 @@ namespace Kino.windows
                 //list_but[temp].IsEnabled = false;
                 list_buttons[temp].Background = Brushes.Red;
             }
+        }
+
+        private void Rezerwacja()
+        {
+            MessageBox.Show(_film.NazwaFilmu);
         }
 
         private void Bt1_MouseRightButtonDown(object sender, MouseButtonEventArgs e)

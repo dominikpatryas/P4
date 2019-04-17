@@ -20,13 +20,6 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Button Grid.Column="0" Grid.Row="0" Click="Button_Click">
-            🢀
-        </Button>
-        <Button Grid.Column="2" Grid.Row="0" Click="Button_Click_1">
-            🢂
-        </Button>
-
         <Grid Grid.Row="0" Grid.Column="1" x:Name="Image_grid">
             <Grid.RowDefinitions>
                 <RowDefinition/>
@@ -37,10 +30,10 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Button Grid.Column="0" Background="White" x:Name="Image_bt1">
-                <!-- <Image Grid.Column="0" Source="1.jpg"/> -->
+                <!-- <Image Grid.Column="0" Source="{Binding PhotoUrl}"/> -->
             </Button>
             <Button Grid.Column="1" Background="White" x:Name="Image_bt2">
-                <!-- <Image Grid.Column="1" Source="2.jpg"/> -->
+                <Image Grid.Column="0" Source="{Binding PhotoUrl}"/>
             </Button>
             <Button Grid.Column="2" Background="White" x:Name="Image_bt3">
                 <!-- <Image Grid.Column="2" Source="3.jpg"/> -->

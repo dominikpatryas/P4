@@ -27,6 +27,7 @@ namespace Kino
     public partial class MainWindow : Window
     {
         Sql databaseSql = new Sql();
+        private int selectedIndex;
 
         public MainWindow()
         {
@@ -162,8 +163,28 @@ namespace Kino
 
         private void McDataGrid_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            _4 x = new _4();
-            x.Show();
+            if (sender != null)
+            {
+                DataGrid grid = sender as DataGrid;
+                if (grid != null && grid.SelectedItems != null && grid.SelectedItems.Count == 1)
+                {
+                    DataGridRow dgr = grid.ItemContainerGenerator.ContainerFromItem(grid.SelectedItem) as DataGridRow;
+                    Film obj = dgr.Item as Film;
+                    this.selectedIndex = grid.SelectedIndex;
+                    int id = obj.ID;
+                    string name = obj.NazwaFilmu;
+                    RezerwacjaMiejsca(obj);
+                    _4 x = new _4(obj);
+                    x.Show();
+                }
+            }
+
+            
+        }
+
+        private void RezerwacjaMiejsca(Film film)
+        {
+            // MessageBox.Show(film.NazwaFilmu);
         }
 
         private void ButtonAddFilm_Click(object sender, RoutedEventArgs e)

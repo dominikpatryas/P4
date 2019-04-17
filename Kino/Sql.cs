@@ -99,8 +99,10 @@ namespace Kino
 
                     var e = new SqlCommand($"SELECT CzasFilmu from Film WHERE ID = {i}", con).ExecuteScalar().ToString();
 
+                    var f = new SqlCommand($"SELECT PhotoUrl from Film WHERE ID = {i}", con).ExecuteScalar().ToString();
 
-                    Film film = new Film(i ,a, b, c, d, e);
+
+                    Film film = new Film(i ,a, b, c, d, e, f);
                     
                     lista.Add(film);
                 }
