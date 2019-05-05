@@ -75,8 +75,7 @@
       <DependentUpon>DodajFilm.xaml</DependentUpon>
     </Compile>
     <Compile Include="Film.cs" />
-    <Compile Include="ISql.cs" />
-    <Compile Include="Models\Sala.cs" />
+    <Compile Include="Models\Klient.cs" />
     <Compile Include="Sql.cs" />
     <Compile Include="windows\4.xaml.cs">
       <DependentUpon>4.xaml</DependentUpon>
@@ -145,6 +144,5 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -9,13 +9,15 @@ namespace Kino
 {
     using System.Windows;
 
-    public class Sql : ISql
+    using Kino.Models;
+
+    public class Sql 
     {
 
         private readonly static string conStr =
             "Data Source=LAPTOP-HJ934Q3G;Initial Catalog=Kino;Integrated Security=True";
 
-        public bool Login(string username, string password)
+        public Klient Login(string username, string password)
         {
             using (SqlConnection con = new SqlConnection(conStr))
             {
@@ -23,12 +25,19 @@ namespace Kino
                     
                 var res = Convert.ToInt32(new SqlCommand($"SELECT COUNT(1) from Klient WHERE Login = '{username}' AND Password = '{password}'", con).ExecuteScalar());
 
-                if (res == 1) return true;
-                else return false;
-
+                if (res == 1)
+                {
+                    Klient klient = new Klient(username, password);
+                    MessageBox.Show("jest obiekt klienta");
+                    return klient;
+                }
+                else {   MessageBox.Show("niepoprawne dane");
+                    return null;
+                }
             }
         }
 
+       
         public bool Login_sprzedawca(string username, string password)
         {
             using (SqlConnection con = new SqlConnection(conStr))
@@ -102,6 +111,8 @@ namespace Kino
                     var f = new SqlCommand($"SELECT PhotoUrl from Film WHERE ID = {i}", con).ExecuteScalar().ToString();
 
 
+
+
                     Film film = new Film(i ,a, b, c, d, e, f);
                     
                     lista.Add(film);
@@ -125,6 +136,29 @@ namespace Kino
                     MessageBox.Show("ok");
                 }
                 else MessageBox.Show("error");
+            }
+        }
+
+        public void ReserveMovie(Klient klient, Film film, int currentSeat)
+        {
+            using (SqlConnection con = new SqlConnection(
+                "Data Source=LAPTOP-HJ934Q3G;Initial Catalog=Kino;Integrated Security=True"))
+            {
+                con.Open();
+
+                string q1 = $"UPDATE Klient SET IDFilmu = {film.ID} WHERE login = '{klient.Login}';"
+                            + $" UPDATE Klient SET NumerMiejsca = {currentSeat} WHERE login = '{klient.Login}'";
+
+                var query = (int)new SqlCommand(q1, con).ExecuteNonQuery();
+
+                if (query == 2)
+                {
+                    MessageBox.Show("ok");
+                }
+                else MessageBox.Show("error");
+
+
+
             }
         }
     }

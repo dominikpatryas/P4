@@ -14,6 +14,8 @@ using System.Windows.Shapes;
 
 namespace Kino.windows
 {
+    using Kino.Models;
+
     /// <summary>
     /// Interaction logic for _4.xaml
     public partial class _4 : Window
@@ -30,11 +32,19 @@ namespace Kino.windows
 
         protected Film _film;
 
-        public _4(Film film)
+        protected Klient _klient;
+
+        protected Sql _databaseSql;
+
+        public int currentSeat;
+
+        public _4(Film film, Klient klient, Sql databaseSql)
         {
             InitializeComponent();
             _film = film;
-            Rezerwacja();
+            _klient = klient;
+            _databaseSql = databaseSql;
+            nazwaFilmu_label.Content = _film.NazwaFilmu;
             Image_grid.DataContext = _film;
             Lb1.FontStyle = FontStyles.Italic;
             Lb1.FontSize = 20;
@@ -54,7 +64,15 @@ namespace Kino.windows
 
         private void Rezerwacja()
         {
-            MessageBox.Show(_film.NazwaFilmu);
+            // MessageBox.Show($"klient: {_klient}");
+            // MessageBox.Show($"film: {_film}");
+            
+            MessageBox.Show( _film.ID.ToString()+" "+ _klient.Login);
+
+
+            _databaseSql.ReserveMovie(_klient,_film, currentSeat);
+
+
         }
 
         private void Bt1_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
@@ -73,10 +91,12 @@ namespace Kino.windows
             var temp = sender as Button;
             if (temp.Background != Brushes.Green && temp.Background != Brushes.Red
                                                  && temp.Background == Close_button.Background)
-            {
+            {   
                 temp.Background = Brushes.Green;
                 TotalValue += OneTicketValue;
                 Lb1.Content = $"{TotalValue} $";
+                currentSeat = Convert.ToInt32(temp.Content);
+
             }
         }
 
@@ -92,7 +112,7 @@ namespace Kino.windows
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            MoveRight();
+           Rezerwacja();
         }
 
         private void MoveLeft()

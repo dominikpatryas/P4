@@ -19,6 +19,7 @@ namespace Kino
     using System.Reflection;
     using System.Runtime.Remoting.Channels;
 
+    using Kino.Models;
     using Kino.windows;
 
     /// <summary>
@@ -27,6 +28,8 @@ namespace Kino
     public partial class MainWindow : Window
     {
         Sql databaseSql = new Sql();
+
+        public Klient klient;
         private int selectedIndex;
 
         public MainWindow()
@@ -66,19 +69,19 @@ namespace Kino
             {
                 var res = databaseSql.Login(textbox_login_input, textbox_password_input);
 
-                if (res == true)
+                if (res != null)
                 {
                     grid1.Visibility = Visibility.Hidden;
                     grid2.Visibility = Visibility.Visible;
                     ButtonAddFilm.Visibility = Visibility.Hidden;
+                    klient = res;
                     loadMovies();
-                    
                 }
-
-                else MessageBox.Show("Invalid username or password!");
             }
           
         }
+
+        
 
         private void loadMovies()
         {
@@ -174,7 +177,7 @@ namespace Kino
                     int id = obj.ID;
                     string name = obj.NazwaFilmu;
                     RezerwacjaMiejsca(obj);
-                    _4 x = new _4(obj);
+                    _4 x = new _4(obj, klient, databaseSql);
                     x.Show();
                 }
             }

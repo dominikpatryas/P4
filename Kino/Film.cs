@@ -25,9 +25,11 @@ namespace Kino
         public string PhotoUrl { get; set; }
 
 
-        public Film(int iD, string nazwaFilmu, string gatunekFilmu, int rokProdukcji, string opisFilmu, string czasFilmu, string photoUrl)
+
+
+        public Film(int iD, string nazwaFilmu, string gatunekFilmu, int rokProdukcji, string opisFilmu, string czasFilmu, string photoUrl )
         {
-            PhotoUrl = photoUrl;
+           PhotoUrl = photoUrl;
             ID = iD;
             NazwaFilmu = nazwaFilmu;
             GatunekFilmu = gatunekFilmu;

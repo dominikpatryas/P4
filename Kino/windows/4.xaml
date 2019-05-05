@@ -29,15 +29,6 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Background="White" x:Name="Image_bt1">
-                <!-- <Image Grid.Column="0" Source="{Binding PhotoUrl}"/> -->
-            </Button>
-            <Button Grid.Column="1" Background="White" x:Name="Image_bt2">
-                <Image Grid.Column="0" Source="{Binding PhotoUrl}"/>
-            </Button>
-            <Button Grid.Column="2" Background="White" x:Name="Image_bt3">
-                <!-- <Image Grid.Column="2" Source="3.jpg"/> -->
-            </Button>
 
         </Grid>
         <Grid Grid.Row="1" Grid.Column="1" x:Name="Buttons_grid">
@@ -180,7 +171,7 @@
             </Grid.RowDefinitions>
             <Label x:Name="Lb1" Grid.Row="0">
             </Label>
-            <Button Grid.Row="2" Click="Button_Click_1">
+            <Button Grid.Row="2" x:Name="Buy_button" Click="Button_Click_1">
                 Buy
             </Button>
         </Grid>
@@ -199,5 +190,6 @@
                 Print ticket
             </Button>
         </Grid>
+        <Label Content="Nazwa Filmu" FontSize="32" Name="nazwaFilmu_label" HorizontalContentAlignment="Center" Grid.Column="1" HorizontalAlignment="Left" Margin="9.8,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.24,0.059" Height="50" Width="575"/>
     </Grid>
 </Window>
