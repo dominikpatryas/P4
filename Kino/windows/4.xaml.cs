@@ -41,9 +41,12 @@ namespace Kino.windows
         public _4(Film film, Klient klient, Sql databaseSql)
         {
             InitializeComponent();
+
+
             _film = film;
             _klient = klient;
             _databaseSql = databaseSql;
+
             nazwaFilmu_label.Content = _film.NazwaFilmu;
             Image_grid.DataContext = _film;
             Lb1.FontStyle = FontStyles.Italic;
@@ -54,12 +57,15 @@ namespace Kino.windows
                 list_buttons[i] = Buttons_grid.Children[i] as Button;
             }
 
-            for (ushort j = 0; j < 7; j++)
+            int []tab = _databaseSql.RedSeatsMovie(film.ID);
+
+            var countOfUsers = _databaseSql.getCountOfUsers();
+            for (int i = 1; i < countOfUsers ; i++)
             {
-                int temp = rnd.Next(0, 30);
-                //list_but[temp].IsEnabled = false;
+                int temp = tab[i] - 1;
                 list_buttons[temp].Background = Brushes.Red;
             }
+            //list_but[temp].IsEnabled = false;
         }
 
         private void Rezerwacja()

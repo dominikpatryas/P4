@@ -161,5 +161,45 @@ namespace Kino
 
             }
         }
+
+        public int[] RedSeatsMovie(int IDMovie)
+        {
+            using (SqlConnection con = new SqlConnection(
+                "Data Source=LAPTOP-HJ934Q3G;Initial Catalog=Kino;Integrated Security=True"))
+            {
+                con.Open();
+                string q0 = $"SELECT COUNT(*) FROM Klient";
+                var countOfRows = (int)new SqlCommand(q0, con).ExecuteScalar();
+                int[] seats = new int[countOfRows];
+
+                for (int i = 1; i <= countOfRows-1; i++)
+                {
+
+                string q1 = $"SELECT NumerMiejsca From Klient WHERE ID={i} ";
+                  seats[i]  = (int)new SqlCommand(q1, con).ExecuteScalar();
+                    
+                    // MessageBox.Show(seats[i].ToString());
+                }
+
+                return seats;
+
+            }
+        }
+
+        public int getCountOfUsers()
+        {
+            using (SqlConnection con = new SqlConnection(
+                "Data Source=LAPTOP-HJ934Q3G;Initial Catalog=Kino;Integrated Security=True"))
+            {
+                con.Open();
+                string q0 = $"SELECT COUNT(*) FROM Klient";
+                var countOfUsers = (int)new SqlCommand(q0, con).ExecuteScalar();
+                
+
+                return countOfUsers;
+
+            }
+
+        }
     }
 }
