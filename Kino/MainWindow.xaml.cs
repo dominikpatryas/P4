@@ -21,11 +21,12 @@ namespace Kino
 
     using Kino.Models;
     using Kino.windows;
+    using MahApps.Metro.Controls;
 
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : MetroWindow
     {
         Sql databaseSql = new Sql();
 
@@ -38,6 +39,7 @@ namespace Kino
             grid1.Visibility = Visibility.Visible;
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             grid2.Visibility = Visibility.Hidden;
+            // hello_label.Visibility = Visibility.Hidden;
             ImageBrush myBrush = new ImageBrush();
             Image image = new Image();
             image.Source = new BitmapImage(
@@ -88,8 +90,6 @@ namespace Kino
             if (grid2.Visibility == Visibility.Visible)
             {
                 var res = databaseSql;
-                navlabel.Content = "";
-                navlabel.FontSize = 30;
 
                 McDataGrid.AutoGenerateColumns = false;
                 DataGridTextColumn IDcol = new DataGridTextColumn();
@@ -123,6 +123,8 @@ namespace Kino
                 McDataGrid.ItemsSource = databaseSql.sqlloadMovies();
                 McDataGrid.MaxColumnWidth = 298;
                 McDataGrid.IsReadOnly = true;
+                hello_label.Visibility = Visibility.Hidden;
+
             }
         }
 

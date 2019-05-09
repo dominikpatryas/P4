@@ -33,3 +33,10 @@ C:\Users\domin\Desktop\Projekty VS\Kino\Kino\bin\Debug\ru\Xceed.Wpf.AvalonDock.r
 C:\Users\domin\Desktop\Projekty VS\Kino\Kino\bin\Debug\sv\Xceed.Wpf.AvalonDock.resources.dll
 C:\Users\domin\Desktop\Projekty VS\Kino\Kino\bin\Debug\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll
 C:\Users\domin\Desktop\Projekty VS\Kino\Kino\obj\Debug\Kino.csproj.CopyComplete
+C:\Users\domin\Desktop\Projekty VS\Kino\Kino\bin\Debug\ControlzEx.dll
+C:\Users\domin\Desktop\Projekty VS\Kino\Kino\bin\Debug\MahApps.Metro.dll
+C:\Users\domin\Desktop\Projekty VS\Kino\Kino\bin\Debug\System.Windows.Interactivity.dll
+C:\Users\domin\Desktop\Projekty VS\Kino\Kino\bin\Debug\ControlzEx.pdb
+C:\Users\domin\Desktop\Projekty VS\Kino\Kino\bin\Debug\MahApps.Metro.pdb
+C:\Users\domin\Desktop\Projekty VS\Kino\Kino\bin\Debug\MahApps.Metro.xml
+C:\Users\domin\Desktop\Projekty VS\Kino\Kino\obj\Debug\App.baml
