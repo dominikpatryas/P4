@@ -8,7 +8,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("mediaplayer/film.mp4")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("mediaplayer/mediaplayer.csproj")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("interstellar.mov")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("interstellar_trim.mp4")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("themartian.mp4")]
 
 

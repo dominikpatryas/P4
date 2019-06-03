@@ -28,10 +28,11 @@ namespace Kino
                 if (res == 1)
                 {
                     Klient klient = new Klient(username, password);
-                    MessageBox.Show("jest obiekt klienta");
+                    // MessageBox.Show("jest obiekt klienta");
                     return klient;
                 }
-                else {   MessageBox.Show("niepoprawne dane");
+                else {
+                    // MessageBox.Show("niepoprawne dane");
                     return null;
                 }
             }
@@ -64,7 +65,6 @@ namespace Kino
                 SqlCommand queryCheckExists = new SqlCommand(q2, con);
 
                 var res2 = Convert.ToInt32(queryCheckExists.ExecuteScalar());
-                MessageBox.Show(q2);
                 if (res2 == 1)
                 {
                     return false;
@@ -98,22 +98,22 @@ namespace Kino
                 
                 for (int i = 1; i <= size; i++)
                 {
-                    var a = new SqlCommand($"SELECT NazwaFilmu from Film WHERE ID = {i}", con).ExecuteScalar().ToString();
+                    var NazwaFilmu = new SqlCommand($"SELECT NazwaFilmu from Film WHERE ID = {i}", con).ExecuteScalar().ToString();
 
-                    var b = new SqlCommand($"SELECT GatunekFilmu from Film WHERE ID = {i}", con).ExecuteScalar().ToString();
+                    var GatunekFilmu = new SqlCommand($"SELECT GatunekFilmu from Film WHERE ID = {i}", con).ExecuteScalar().ToString();
                     
-                    var c = Convert.ToInt32(new SqlCommand($"SELECT RokProdukcji from Film WHERE ID = {i}", con).ExecuteScalar());
+                    var RokProdukcji = Convert.ToInt32(new SqlCommand($"SELECT RokProdukcji from Film WHERE ID = {i}", con).ExecuteScalar());
                     
-                    var d = new SqlCommand($"SELECT OpisFilmu from Film WHERE ID = {i}", con).ExecuteScalar().ToString();
+                    var OpisFilmu = new SqlCommand($"SELECT OpisFilmu from Film WHERE ID = {i}", con).ExecuteScalar().ToString();
 
-                    var e = new SqlCommand($"SELECT CzasFilmu from Film WHERE ID = {i}", con).ExecuteScalar().ToString();
+                    var CzasFilmu = new SqlCommand($"SELECT CzasFilmu from Film WHERE ID = {i}", con).ExecuteScalar().ToString();
 
-                    var f = new SqlCommand($"SELECT PhotoUrl from Film WHERE ID = {i}", con).ExecuteScalar().ToString();
-
-
+                    var PhotoUrl = new SqlCommand($"SELECT PhotoUrl from Film WHERE ID = {i}", con).ExecuteScalar().ToString();
 
 
-                    Film film = new Film(i ,a, b, c, d, e, f);
+
+
+                    Film film = new Film(i ,NazwaFilmu, GatunekFilmu, RokProdukcji, OpisFilmu ,CzasFilmu, PhotoUrl);
                     
                     lista.Add(film);
                 }
@@ -127,15 +127,40 @@ namespace Kino
             using (SqlConnection con = new SqlConnection("Data Source=LAPTOP-HJ934Q3G;Initial Catalog=Kino;Integrated Security=True"))
             {
                 string q1 = $"Insert into Film(NazwaFilmu, GatunekFilmu, RokProdukcji, OpisFilmu, CzasFilmu) Values('{nazwa}', '{gatunek}','{rok}','{opis}','{data}')";
-
                 con.Open();
                 var query = (int)new SqlCommand(q1, con).ExecuteNonQuery();
 
-                if (query == 1)
-                {
-                    MessageBox.Show("ok");
-                }
-                else MessageBox.Show("error");
+                // if (query == 1)
+                // {
+                //     MessageBox.Show("ok");
+                // }
+                // else MessageBox.Show("error");
+
+                string q2 = $"select ID From Film where NazwaFilmu='{nazwa}'";
+                var id_movie = (int)new SqlCommand(q2, con).ExecuteScalar();
+                string q3 = $"Insert into Sale(ID_filmu, NazwaFilmu) Values({id_movie}, '{nazwa}')";
+                var q3_query = (int)new SqlCommand(q3, con).ExecuteNonQuery();
+
+
+
+                // string q3 =
+                //     $"USE Kino CREATE TABLE[dbo].[Sala{seat + "_" +nazwa}]( ID INT NOT NULL IDENTITY(1, 1) "
+                //     + $"PRIMARY KEY, Miejsce1 int NULL, Miejsce2 int NULL , Miejsce3 int NULL, Miejsce4 int NULL ,"
+                //     + $" Miejsce5 int NULL, Miejsce6 int NULL, Miejsce7 int NULL, Miejsce8 int NULL, Miejsce9 int NULL, Miejsce10 int NULL,"
+                //     + $" Miejsce11 int NULL, Miejsce12 int NULL, Miejsce13 int NULL, Miejsce14 int NULL, Miejsce15 int NULL, Miejsce16 int NULL,"
+                //     + $" Miejsce17 int NULL, Miejsce18 int NULL, Miejsce19 int NULL, Miejsce20 int NULL, Miejsce21 int NULL, Miejsce22 int NULL,"
+                //     + $" Miejsce23 int NULL, Miejsce24 int NULL, Miejsce25 int NULL, Miejsce26 int NULL, Miejsce27 int NULL, Miejsce28 int NULL,"
+                //     + $" Miejsce29 int NULL, Miejsce30 int NULL, Zarezerwowana int NULL ) ALTER TABLE Sala{seat + "_" + nazwa} ADD ID_Film"
+                //     + $" INT NOT NULL; ALTER TABLE Sala{seat + "_" + nazwa} ADD FOREIGN KEY(ID_Film) REFERENCES Film(ID); ";
+                //
+                // var q3_query = (int)new SqlCommand(q3, con).ExecuteNonQuery();
+                //
+                // if (q3_query == 1)
+                // {
+                //     MessageBox.Show("ok zrobiony zostal table dla filmu " + seat);
+                // }
+                // else MessageBox.Show("error - chuj nie udalo sie zrobic table dla" + seat);
+
             }
         }
 
@@ -145,22 +170,30 @@ namespace Kino
                 "Data Source=LAPTOP-HJ934Q3G;Initial Catalog=Kino;Integrated Security=True"))
             {
                 con.Open();
-
                 string q1 = $"UPDATE Klient SET IDFilmu = {film.ID} WHERE login = '{klient.Login}';"
                             + $" UPDATE Klient SET NumerMiejsca = {currentSeat} WHERE login = '{klient.Login}'";
 
                 var query = (int)new SqlCommand(q1, con).ExecuteNonQuery();
 
-                if (query == 2)
-                {
-                    MessageBox.Show("ok");
-                }
-                else MessageBox.Show("error");
+                // if (query == 2)
+                // {
+                //     MessageBox.Show("ok");
+                // }
+                // else MessageBox.Show("error w update");
 
+                string q3 = $"Update Sale Set Miejsce{currentSeat} = 1 WHERE ID_Filmu = {film.ID};";
 
+                var query_Q3 = (int)new SqlCommand(q3, con).ExecuteNonQuery();
+
+                // if (query_Q3 == 1)
+                // {
+                //     MessageBox.Show("ok w insercie do sali" + currentSeat);
+                // }
+                // else MessageBox.Show("error w insercie do sali" + currentSeat);
 
             }
         }
+
 
         public int[] RedSeatsMovie(int IDMovie)
         {
@@ -183,6 +216,43 @@ namespace Kino
 
                 return seats;
 
+            }
+        }
+
+        public int[] RedRealSeatsMovie(int IDMovie)
+        {
+            using (SqlConnection con = new SqlConnection(
+                "Data Source=LAPTOP-HJ934Q3G;Initial Catalog=Kino;Integrated Security=True"))
+            {
+                con.Open();
+                string q0 = $"SELECT COUNT(*) FROM Klient WHERE IDFilmu={IDMovie}";
+                var countOfRows = (int)new SqlCommand(q0, con).ExecuteScalar();
+                int[] seats = new int[countOfRows]; 
+
+                for (int i = 0; i < countOfRows ; i++)
+                {
+
+                    string q1 = $"SELECT NumerMiejsca From Klient WHERE IDFilmu ={IDMovie} ";
+                    seats[i] = (int)new SqlCommand(q1, con).ExecuteScalar();
+
+                    // MessageBox.Show(seats[i].ToString());
+                }
+
+                return seats;
+
+            }
+        }
+
+        public int getCountOfRows(int IDMovie)
+        {
+            using (SqlConnection con = new SqlConnection(
+                "Data Source=LAPTOP-HJ934Q3G;Initial Catalog=Kino;Integrated Security=True"))
+            {
+                con.Open();
+                string q0 = $"SELECT COUNT(*) FROM Klient WHERE IDFilmu='{IDMovie}'";
+                var countOfRows = (int)new SqlCommand(q0, con).ExecuteScalar();
+
+                return countOfRows;
             }
         }
 

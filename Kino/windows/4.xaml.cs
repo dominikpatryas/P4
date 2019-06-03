@@ -46,7 +46,7 @@ namespace Kino.windows
             _film = film;
             _klient = klient;
             _databaseSql = databaseSql;
-
+            
             nazwaFilmu_label.Content = _film.NazwaFilmu;
             Image_grid.DataContext = _film;
             Lb1.FontStyle = FontStyles.Italic;
@@ -57,12 +57,14 @@ namespace Kino.windows
                 list_buttons[i] = Buttons_grid.Children[i] as Button;
             }
 
-            int []tab = _databaseSql.RedSeatsMovie(film.ID);
+            // int []tab = _databaseSql.RedSeatsMovie(film.ID);
+            int []tab = _databaseSql.RedRealSeatsMovie(film.ID);
 
-            var countOfUsers = _databaseSql.getCountOfUsers();
-            for (int i = 1; i < countOfUsers ; i++)
+            var countOfUsers = _databaseSql.getCountOfRows(film.ID);
+            
+            for (int i = 0; i < _databaseSql.RedRealSeatsMovie(film.ID).Length; i++)
             {
-                int temp = tab[i] - 1;
+                int temp = tab[i] -1;
                 list_buttons[temp].Background = Brushes.Red;
             }
             //list_but[temp].IsEnabled = false;
@@ -72,13 +74,25 @@ namespace Kino.windows
         {
             // MessageBox.Show($"klient: {_klient}");
             // MessageBox.Show($"film: {_film}");
-            
-            MessageBox.Show( _film.ID.ToString()+" "+ _klient.Login);
+            if (_klient != null)
+            {
+
+                // MessageBox.Show(_film.ID.ToString() + " " + _klient.Login);
 
 
-            _databaseSql.ReserveMovie(_klient,_film, currentSeat);
 
-
+                _databaseSql.ReserveMovie(_klient, _film, currentSeat);
+                score.FontSize = 25;
+                score.Foreground = Brushes.Green;
+                score.Content = "Udało Ci się zarezerwować miejsce.";
+            }
+            else
+            {
+                score.FontSize = 25;
+                score.Foreground = Brushes.Red;
+                score.Margin = new Thickness(20, 0, -14.8, 0);
+                score.Content = "Nie udało Ci się zarezerwować miejsca.";
+            }
         }
 
         private void Bt1_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
@@ -129,6 +143,14 @@ namespace Kino.windows
         private void MoveRight()
         {
 
+        }
+
+        private void Trailer_Click(object sender, RoutedEventArgs e)
+        {
+            
+            Player player = new Player();
+            player.Show();
+            player.watchTrailer(_film.ID, _film.NazwaFilmu);
         }
     }
 }

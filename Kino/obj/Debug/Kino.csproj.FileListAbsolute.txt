@@ -39,4 +39,6 @@ C:\Users\domin\Desktop\Projekty VS\Kino\Kino\bin\Debug\System.Windows.Interactiv
 C:\Users\domin\Desktop\Projekty VS\Kino\Kino\bin\Debug\ControlzEx.pdb
 C:\Users\domin\Desktop\Projekty VS\Kino\Kino\bin\Debug\MahApps.Metro.pdb
 C:\Users\domin\Desktop\Projekty VS\Kino\Kino\bin\Debug\MahApps.Metro.xml
-C:\Users\domin\Desktop\Projekty VS\Kino\Kino\obj\Debug\App.baml
+C:\Users\domin\Desktop\Projekty VS\Kino\Kino\obj\Debug\Player.g.cs
+C:\Users\domin\Desktop\Projekty VS\Kino\Kino\obj\Debug\Kino_Content.g.cs
+C:\Users\domin\Desktop\Projekty VS\Kino\Kino\obj\Debug\Player.baml

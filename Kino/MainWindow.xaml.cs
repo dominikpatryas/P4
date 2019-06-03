@@ -26,19 +26,22 @@ namespace Kino
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : MetroWindow
+    public partial class MainWindow : Window
     {
         Sql databaseSql = new Sql();
 
         public Klient klient;
         private int selectedIndex;
 
+        private bool isLogged = false;
+
         public MainWindow()
         {
             InitializeComponent();
-            grid1.Visibility = Visibility.Visible;
+            grid1.Visibility = Visibility.Hidden;
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
-            grid2.Visibility = Visibility.Hidden;
+            grid2.Visibility = Visibility.Visible;
+            loadMovies();
             // hello_label.Visibility = Visibility.Hidden;
             ImageBrush myBrush = new ImageBrush();
             Image image = new Image();
@@ -47,6 +50,7 @@ namespace Kino
                     "C:/Users/domin/Pictures/cinema1.jpg"));
             myBrush.ImageSource = image.Source;
             grid2.Background = myBrush;
+            // zalogujsie_button.Visibility = Visibility.Visible;
         }
 
         // LOGOWANIE
@@ -77,6 +81,10 @@ namespace Kino
                     grid2.Visibility = Visibility.Visible;
                     ButtonAddFilm.Visibility = Visibility.Hidden;
                     klient = res;
+                    isLogged = true;
+                    log_label.Visibility = Visibility.Hidden;
+                    zalogujsie_button.Visibility = Visibility.Hidden;
+                    grid2.Visibility = Visibility.Visible;
                     loadMovies();
                 }
             }
@@ -123,7 +131,6 @@ namespace Kino
                 McDataGrid.ItemsSource = databaseSql.sqlloadMovies();
                 McDataGrid.MaxColumnWidth = 298;
                 McDataGrid.IsReadOnly = true;
-                hello_label.Visibility = Visibility.Hidden;
 
             }
         }
@@ -140,8 +147,7 @@ namespace Kino
             var res = databaseSql.Register(textbox_register_input, textbox_password_input);
             if (res == true)
             {
-                grid1.Visibility = Visibility.Hidden;
-                grid2.Visibility = Visibility.Visible;
+                MessageBox.Show("k");
             }
             else MessageBox.Show("Invalid username or password!");
         }
@@ -179,8 +185,19 @@ namespace Kino
                     int id = obj.ID;
                     string name = obj.NazwaFilmu;
                     RezerwacjaMiejsca(obj);
-                    _4 x = new _4(obj, klient, databaseSql);
-                    x.Show();
+
+                    if (isLogged == true)
+                    {
+                        log_label.Visibility = Visibility.Hidden;
+                        _4 x = new _4(obj, klient, databaseSql);
+                        x.Show();
+                    }
+                    else
+                    {
+                        log_label.FontSize = 25;
+                        log_label.Foreground = Brushes.Red;
+                        log_label.Content = "Nie jesteś zalogowany.";
+                    }
                 }
             }
 
@@ -204,7 +221,19 @@ namespace Kino
             loadMovies();
         }
 
-        
+        private void Open_Click(object sender, RoutedEventArgs e)
+        {
+            Player player = new Player();
+            player.Show();
+        }
+   
+
+        private void Zalogujsie_button_Click_1(object sender, RoutedEventArgs e)
+        {
+            grid2.Visibility = Visibility.Hidden;
+            grid1.Visibility = Visibility.Visible;
+           
+        }
     }
 
 
