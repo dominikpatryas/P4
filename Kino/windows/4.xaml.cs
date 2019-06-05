@@ -14,6 +14,8 @@ using System.Windows.Shapes;
 
 namespace Kino.windows
 {
+    using System.Collections;
+
     using Kino.Models;
 
     /// <summary>
@@ -36,7 +38,9 @@ namespace Kino.windows
 
         protected Sql _databaseSql;
 
-        public int currentSeat;
+        public int []currentSeat;
+
+        public ArrayList arrayList = new ArrayList();
 
         public _4(Film film, Klient klient, Sql databaseSql)
         {
@@ -58,15 +62,17 @@ namespace Kino.windows
             }
 
             // int []tab = _databaseSql.RedSeatsMovie(film.ID);
-            int []tab = _databaseSql.RedRealSeatsMovie(film.ID);
+            ArrayList seats = _databaseSql.RedRealSeatsMovie(film.ID);
 
             var countOfUsers = _databaseSql.getCountOfRows(film.ID);
             
-            for (int i = 0; i < _databaseSql.RedRealSeatsMovie(film.ID).Length; i++)
+            foreach (int i in seats)
             {
-                int temp = tab[i] -1;
+                int temp = i -1;
                 list_buttons[temp].Background = Brushes.Red;
+
             }
+            // int temp = seats[i] -1;
             //list_but[temp].IsEnabled = false;
         }
 
@@ -81,7 +87,7 @@ namespace Kino.windows
 
 
 
-                _databaseSql.ReserveMovie(_klient, _film, currentSeat);
+                _databaseSql.ReserveMovie(_klient, _film, arrayList);
                 score.FontSize = 25;
                 score.Foreground = Brushes.Green;
                 score.Content = "Udało Ci się zarezerwować miejsce.";
@@ -109,16 +115,49 @@ namespace Kino.windows
         private void Bt1_Click(object sender, RoutedEventArgs e)
         {
             var temp = sender as Button;
+            ArrayList arr = new ArrayList();
             if (temp.Background != Brushes.Green && temp.Background != Brushes.Red
                                                  && temp.Background == Close_button.Background)
-            {   
+            {
                 temp.Background = Brushes.Green;
-                TotalValue += OneTicketValue;
-                Lb1.Content = $"{TotalValue} $";
-                currentSeat = Convert.ToInt32(temp.Content);
+                var x = temp.Content;
+                
+                arrayList.Add(x);
+                // arr.Add(Convert.ToInt32(temp.Content));
 
             }
+
         }
+
+
+
+        // DZIALA
+        // private void Bt1_Click(object sender, RoutedEventArgs e)
+        // {
+        //     var temp = sender as Button;
+        //     ArrayList arr = new ArrayList();
+        //     if (temp.Background != Brushes.Green && temp.Background != Brushes.Red
+        //                                          && temp.Background == Close_button.Background)
+        //     {
+        //         temp.Background = Brushes.Green;
+        //         arr.Add(Convert.ToInt32(temp.Content));
+        //
+        //         for (int i = 0; i < arr.Count; i++)
+        //         {
+        //
+        //         }
+        //
+        //         int j = 0;
+        //         currentSeat = new[] { 2 };
+        //
+        //         foreach (var i in arr)
+        //         {
+        //             currentSeat[j] = Convert.ToInt32(i);
+        //             j++;
+        //
+        //         }
+        //     }
+        // }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {

@@ -75,9 +75,11 @@
                 </DataGrid.RowDetailsTemplate>
             </DataGrid>
             <Button x:Name="ButtonAddFilm" Content="Dodaj film" HorizontalAlignment="Left" Margin="817,61,0,0" VerticalAlignment="Top" Width="106" Height="36" Click="ButtonAddFilm_Click"/>
-            <Button x:Name="RefreshFilm" Content="Odśwież" HorizontalAlignment="Left" Margin="817,102,0,0" VerticalAlignment="Top" Width="106" Click="RefreshFilm_Click" Height="36"/>
-            <Button x:Name="zalogujsie_button" Visibility="Visible" Content="Zaloguj się" HorizontalAlignment="Left" Margin="817,143,0,0" VerticalAlignment="Top" Width="106" Click="Zalogujsie_button_Click_1" Height="36"/>
-            <Label x:Name="log_label" Content="&#xD;&#xA;" HorizontalAlignment="Left" Height="50" Margin="354,450,0,0" VerticalAlignment="Top" Width="510"/>
+            <Button x:Name="RefreshFilm" Content="Odśwież" HorizontalAlignment="Left" Margin="817,143,0,0" VerticalAlignment="Top" Width="106" Click="RefreshFilm_Click" Height="36"/>
+            <Button x:Name="zalogujsie_button" Visibility="Visible" Content="Zaloguj się" HorizontalAlignment="Left" Margin="817,102,0,0" VerticalAlignment="Top" Width="106" Click="Zalogujsie_button_Click_1" Height="36"/>
+            <Label x:Name="log_label" Content="&#xD;&#xA;" HorizontalAlignment="Left" Height="50" Margin="440,430,0,0" VerticalAlignment="Top" Width="510"/>
+            <Button x:Name="logout_button" Content="Wyloguj" HorizontalAlignment="Left" Margin="817,184,0,0" VerticalAlignment="Top" Width="106" Height="30" Click="Logout_button_Click"/>
+            <Label Content="Nazwa Filmu" FontSize="32" x:Name="dwukrotnie_label" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="44,450,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.24,0.059" Height="67" Width="879" Foreground="White"/>
 
 
 

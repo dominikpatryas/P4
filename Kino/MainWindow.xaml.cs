@@ -38,9 +38,14 @@ namespace Kino
         public MainWindow()
         {
             InitializeComponent();
+            logout_button.Visibility = Visibility.Hidden;
             grid1.Visibility = Visibility.Hidden;
+            ButtonAddFilm.Visibility = Visibility.Hidden;
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             grid2.Visibility = Visibility.Visible;
+            dwukrotnie_label.Visibility = Visibility.Visible;
+
+            dwukrotnie_label.Content = "Naciśnij dwukrotnie na film, aby przejść do panelu rezerwacji.";
             loadMovies();
             // hello_label.Visibility = Visibility.Hidden;
             ImageBrush myBrush = new ImageBrush();
@@ -68,8 +73,19 @@ namespace Kino
                 grid2.Visibility = Visibility.Visible;
 
                 loadMovies();
+                ButtonAddFilm.Visibility = Visibility.Visible;
+                zalogujsie_button.Visibility = Visibility.Hidden;
+                log_label.Visibility = Visibility.Visible;
+                log_label.FontSize = 25;
+                dwukrotnie_label.Visibility = Visibility.Hidden;
+                log_label.Foreground = Brushes.Green;
+                log_label.Margin = new Thickness(440, 430, 0, 0);
+
+                log_label.Content = "Zalogowano";
+
+
             }
-            
+
 
             if (!loginCheckbox.IsChecked.Value)
             {
@@ -82,9 +98,20 @@ namespace Kino
                     ButtonAddFilm.Visibility = Visibility.Hidden;
                     klient = res;
                     isLogged = true;
-                    log_label.Visibility = Visibility.Hidden;
+
+                    if (isLogged)
+                    {
+                        logout_button.Visibility = Visibility.Visible;
+                    }
+
                     zalogujsie_button.Visibility = Visibility.Hidden;
                     grid2.Visibility = Visibility.Visible;
+                    log_label.Visibility = Visibility.Visible;
+                    log_label.FontSize = 25;
+                    log_label.Foreground = Brushes.Green;
+                    dwukrotnie_label.Visibility = Visibility.Hidden;
+                    log_label.Margin = new Thickness(440, 430, 0, 0);
+                    log_label.Content = "Zalogowano";
                     loadMovies();
                 }
             }
@@ -132,6 +159,16 @@ namespace Kino
                 McDataGrid.MaxColumnWidth = 298;
                 McDataGrid.IsReadOnly = true;
 
+            }
+        }
+
+        private void Logout()
+        {
+            isLogged = false;
+            zalogujsie_button.Visibility = Visibility.Visible;
+            if (!isLogged)
+            {
+                logout_button.Visibility = Visibility.Hidden;
             }
         }
 
@@ -196,6 +233,8 @@ namespace Kino
                     {
                         log_label.FontSize = 25;
                         log_label.Foreground = Brushes.Red;
+                        dwukrotnie_label.Visibility = Visibility.Hidden;
+                        log_label.Margin = new Thickness(375, 430, 0, 0);
                         log_label.Content = "Nie jesteś zalogowany.";
                     }
                 }
@@ -233,6 +272,12 @@ namespace Kino
             grid2.Visibility = Visibility.Hidden;
             grid1.Visibility = Visibility.Visible;
            
+        }
+
+        private void Logout_button_Click(object sender, RoutedEventArgs e)
+        {
+            Logout();
+            logout_button.Visibility = Visibility.Hidden;
         }
     }
 

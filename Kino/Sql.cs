@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Kino
 {
+    using System.Collections;
     using System.Windows;
 
     using Kino.Models;
@@ -29,6 +30,8 @@ namespace Kino
                 {
                     Klient klient = new Klient(username, password);
                     // MessageBox.Show("jest obiekt klienta");
+                    var id = getClientID(username);
+                    klient.ID = id;
                     return klient;
                 }
                 else {
@@ -38,7 +41,22 @@ namespace Kino
             }
         }
 
-       
+        private int getClientID(string username)
+        {
+            using (SqlConnection con = new SqlConnection(conStr))
+            {
+                con.Open();
+
+                var res = Convert.ToInt32(
+                    new SqlCommand(
+                        $"SELECT ID from Klient WHERE Login = '{username}'",
+                        con).ExecuteScalar());
+
+                return res;
+
+            }
+        }
+
         public bool Login_sprzedawca(string username, string password)
         {
             using (SqlConnection con = new SqlConnection(conStr))
@@ -164,35 +182,50 @@ namespace Kino
             }
         }
 
-        public void ReserveMovie(Klient klient, Film film, int currentSeat)
+        public void ReserveMovie(Klient klient, Film film, ArrayList currentSeat)
         {
             using (SqlConnection con = new SqlConnection(
                 "Data Source=LAPTOP-HJ934Q3G;Initial Catalog=Kino;Integrated Security=True"))
             {
                 con.Open();
-                string q1 = $"UPDATE Klient SET IDFilmu = {film.ID} WHERE login = '{klient.Login}';"
-                            + $" UPDATE Klient SET NumerMiejsca = {currentSeat} WHERE login = '{klient.Login}'";
+                
+                    string q1 = $"UPDATE Klient SET IDFilmu = {film.ID} WHERE login = '{klient.Login}';"
+                                + $" UPDATE Klient SET NumerMiejsca = {currentSeat} WHERE login = '{klient.Login}'";
 
-                var query = (int)new SqlCommand(q1, con).ExecuteNonQuery();
+            foreach (var i in currentSeat)
+            {
+                string q4 =
+                        $"Insert into Sale(ID_Klienta,ID_Filmu, NazwaFilmu, NumerMiejsca) VALUES ('{klient.ID}', '{film.ID}', '{film.NazwaFilmu}','{i}')";
 
-                // if (query == 2)
-                // {
-                //     MessageBox.Show("ok");
-                // }
-                // else MessageBox.Show("error w update");
-
-                string q3 = $"Update Sale Set Miejsce{currentSeat} = 1 WHERE ID_Filmu = {film.ID};";
-
-                var query_Q3 = (int)new SqlCommand(q3, con).ExecuteNonQuery();
-
-                // if (query_Q3 == 1)
-                // {
-                //     MessageBox.Show("ok w insercie do sali" + currentSeat);
-                // }
-                // else MessageBox.Show("error w insercie do sali" + currentSeat);
-
+                    var query_Q4 = (int)new SqlCommand(q4, con).ExecuteNonQuery();
+                }
+                
             }
         }
+
+
+        // DZAIA
+        // public void ReserveMovie(Klient klient, Film film, int[] currentSeat)
+        // {
+        //     using (SqlConnection con = new SqlConnection(
+        //         "Data Source=LAPTOP-HJ934Q3G;Initial Catalog=Kino;Integrated Security=True"))
+        //     {
+        //         con.Open();
+        //
+        //         string q1 = $"UPDATE Klient SET IDFilmu = {film.ID} WHERE login = '{klient.Login}';"
+        //                     + $" UPDATE Klient SET NumerMiejsca = {currentSeat} WHERE login = '{klient.Login}'";
+        //
+        //
+        //         for (int i = 0; i < currentSeat.Length; i++)
+        //         {
+        //             string q4 =
+        //                 $"Insert into Sale(ID_Klienta,ID_Filmu, NazwaFilmu, NumerMiejsca) VALUES ('{klient.ID}', '{film.ID}', '{film.NazwaFilmu}','{currentSeat[i]}')";
+        //
+        //             var query_Q4 = (int)new SqlCommand(q4, con).ExecuteNonQuery();
+        //         }
+        //
+        //     }
+        // }
 
 
         public int[] RedSeatsMovie(int IDMovie)
@@ -219,24 +252,29 @@ namespace Kino
             }
         }
 
-        public int[] RedRealSeatsMovie(int IDMovie)
+        public ArrayList RedRealSeatsMovie(int IDMovie)
         {
             using (SqlConnection con = new SqlConnection(
                 "Data Source=LAPTOP-HJ934Q3G;Initial Catalog=Kino;Integrated Security=True"))
             {
                 con.Open();
-                string q0 = $"SELECT COUNT(*) FROM Klient WHERE IDFilmu={IDMovie}";
+                string q0 = $"SELECT COUNT(*) FROM Sale WHERE ID_Filmu={IDMovie}";
                 var countOfRows = (int)new SqlCommand(q0, con).ExecuteScalar();
-                int[] seats = new int[countOfRows]; 
+                ArrayList seats = new ArrayList(); 
 
-                for (int i = 0; i < countOfRows ; i++)
+                // for (int i = 0; i < countOfRows ; i++)
+                // {
+
+                   SqlCommand command = new SqlCommand($"SELECT NumerMiejsca From Sale WHERE ID_Filmu ={IDMovie} ", con);
+                    SqlDataReader dataReader = command.ExecuteReader();
+
+                while (dataReader.Read())
                 {
-
-                    string q1 = $"SELECT NumerMiejsca From Klient WHERE IDFilmu ={IDMovie} ";
-                    seats[i] = (int)new SqlCommand(q1, con).ExecuteScalar();
+                    seats.Add(Convert.ToInt32(dataReader[0].ToString()));
+                }
 
                     // MessageBox.Show(seats[i].ToString());
-                }
+                // }
 
                 return seats;
 
@@ -249,7 +287,7 @@ namespace Kino
                 "Data Source=LAPTOP-HJ934Q3G;Initial Catalog=Kino;Integrated Security=True"))
             {
                 con.Open();
-                string q0 = $"SELECT COUNT(*) FROM Klient WHERE IDFilmu='{IDMovie}'";
+                string q0 = $"SELECT COUNT(*) FROM Sale WHERE ID_Filmu='{IDMovie}'";
                 var countOfRows = (int)new SqlCommand(q0, con).ExecuteScalar();
 
                 return countOfRows;
