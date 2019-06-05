@@ -61,7 +61,6 @@ namespace Kino.windows
                 list_buttons[i] = Buttons_grid.Children[i] as Button;
             }
 
-            // int []tab = _databaseSql.RedSeatsMovie(film.ID);
             ArrayList seats = _databaseSql.RedRealSeatsMovie(film.ID);
 
             var countOfUsers = _databaseSql.getCountOfRows(film.ID);
@@ -72,18 +71,14 @@ namespace Kino.windows
                 list_buttons[temp].Background = Brushes.Red;
 
             }
-            // int temp = seats[i] -1;
-            //list_but[temp].IsEnabled = false;
         }
 
         private void Rezerwacja()
         {
-            // MessageBox.Show($"klient: {_klient}");
-            // MessageBox.Show($"film: {_film}");
+          
             if (_klient != null)
             {
 
-                // MessageBox.Show(_film.ID.ToString() + " " + _klient.Login);
 
 
 
@@ -123,42 +118,11 @@ namespace Kino.windows
                 var x = temp.Content;
                 
                 arrayList.Add(x);
-                // arr.Add(Convert.ToInt32(temp.Content));
 
             }
 
         }
-
-
-
-        // DZIALA
-        // private void Bt1_Click(object sender, RoutedEventArgs e)
-        // {
-        //     var temp = sender as Button;
-        //     ArrayList arr = new ArrayList();
-        //     if (temp.Background != Brushes.Green && temp.Background != Brushes.Red
-        //                                          && temp.Background == Close_button.Background)
-        //     {
-        //         temp.Background = Brushes.Green;
-        //         arr.Add(Convert.ToInt32(temp.Content));
-        //
-        //         for (int i = 0; i < arr.Count; i++)
-        //         {
-        //
-        //         }
-        //
-        //         int j = 0;
-        //         currentSeat = new[] { 2 };
-        //
-        //         foreach (var i in arr)
-        //         {
-        //             currentSeat[j] = Convert.ToInt32(i);
-        //             j++;
-        //
-        //         }
-        //     }
-        // }
-
+       
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             this.Close();

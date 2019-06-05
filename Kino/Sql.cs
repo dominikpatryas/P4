@@ -29,13 +29,11 @@ namespace Kino
                 if (res == 1)
                 {
                     Klient klient = new Klient(username, password);
-                    // MessageBox.Show("jest obiekt klienta");
                     var id = getClientID(username);
                     klient.ID = id;
                     return klient;
                 }
                 else {
-                    // MessageBox.Show("niepoprawne dane");
                     return null;
                 }
             }
@@ -129,8 +127,6 @@ namespace Kino
                     var PhotoUrl = new SqlCommand($"SELECT PhotoUrl from Film WHERE ID = {i}", con).ExecuteScalar().ToString();
 
 
-
-
                     Film film = new Film(i ,NazwaFilmu, GatunekFilmu, RokProdukcji, OpisFilmu ,CzasFilmu, PhotoUrl);
                     
                     lista.Add(film);
@@ -148,36 +144,10 @@ namespace Kino
                 con.Open();
                 var query = (int)new SqlCommand(q1, con).ExecuteNonQuery();
 
-                // if (query == 1)
-                // {
-                //     MessageBox.Show("ok");
-                // }
-                // else MessageBox.Show("error");
-
                 string q2 = $"select ID From Film where NazwaFilmu='{nazwa}'";
                 var id_movie = (int)new SqlCommand(q2, con).ExecuteScalar();
                 string q3 = $"Insert into Sale(ID_filmu, NazwaFilmu) Values({id_movie}, '{nazwa}')";
                 var q3_query = (int)new SqlCommand(q3, con).ExecuteNonQuery();
-
-
-
-                // string q3 =
-                //     $"USE Kino CREATE TABLE[dbo].[Sala{seat + "_" +nazwa}]( ID INT NOT NULL IDENTITY(1, 1) "
-                //     + $"PRIMARY KEY, Miejsce1 int NULL, Miejsce2 int NULL , Miejsce3 int NULL, Miejsce4 int NULL ,"
-                //     + $" Miejsce5 int NULL, Miejsce6 int NULL, Miejsce7 int NULL, Miejsce8 int NULL, Miejsce9 int NULL, Miejsce10 int NULL,"
-                //     + $" Miejsce11 int NULL, Miejsce12 int NULL, Miejsce13 int NULL, Miejsce14 int NULL, Miejsce15 int NULL, Miejsce16 int NULL,"
-                //     + $" Miejsce17 int NULL, Miejsce18 int NULL, Miejsce19 int NULL, Miejsce20 int NULL, Miejsce21 int NULL, Miejsce22 int NULL,"
-                //     + $" Miejsce23 int NULL, Miejsce24 int NULL, Miejsce25 int NULL, Miejsce26 int NULL, Miejsce27 int NULL, Miejsce28 int NULL,"
-                //     + $" Miejsce29 int NULL, Miejsce30 int NULL, Zarezerwowana int NULL ) ALTER TABLE Sala{seat + "_" + nazwa} ADD ID_Film"
-                //     + $" INT NOT NULL; ALTER TABLE Sala{seat + "_" + nazwa} ADD FOREIGN KEY(ID_Film) REFERENCES Film(ID); ";
-                //
-                // var q3_query = (int)new SqlCommand(q3, con).ExecuteNonQuery();
-                //
-                // if (q3_query == 1)
-                // {
-                //     MessageBox.Show("ok zrobiony zostal table dla filmu " + seat);
-                // }
-                // else MessageBox.Show("error - chuj nie udalo sie zrobic table dla" + seat);
 
             }
         }
@@ -204,30 +174,6 @@ namespace Kino
         }
 
 
-        // DZAIA
-        // public void ReserveMovie(Klient klient, Film film, int[] currentSeat)
-        // {
-        //     using (SqlConnection con = new SqlConnection(
-        //         "Data Source=LAPTOP-HJ934Q3G;Initial Catalog=Kino;Integrated Security=True"))
-        //     {
-        //         con.Open();
-        //
-        //         string q1 = $"UPDATE Klient SET IDFilmu = {film.ID} WHERE login = '{klient.Login}';"
-        //                     + $" UPDATE Klient SET NumerMiejsca = {currentSeat} WHERE login = '{klient.Login}'";
-        //
-        //
-        //         for (int i = 0; i < currentSeat.Length; i++)
-        //         {
-        //             string q4 =
-        //                 $"Insert into Sale(ID_Klienta,ID_Filmu, NazwaFilmu, NumerMiejsca) VALUES ('{klient.ID}', '{film.ID}', '{film.NazwaFilmu}','{currentSeat[i]}')";
-        //
-        //             var query_Q4 = (int)new SqlCommand(q4, con).ExecuteNonQuery();
-        //         }
-        //
-        //     }
-        // }
-
-
         public int[] RedSeatsMovie(int IDMovie)
         {
             using (SqlConnection con = new SqlConnection(
@@ -244,7 +190,6 @@ namespace Kino
                 string q1 = $"SELECT NumerMiejsca From Klient WHERE ID={i} ";
                   seats[i]  = (int)new SqlCommand(q1, con).ExecuteScalar();
                     
-                    // MessageBox.Show(seats[i].ToString());
                 }
 
                 return seats;
@@ -262,9 +207,7 @@ namespace Kino
                 var countOfRows = (int)new SqlCommand(q0, con).ExecuteScalar();
                 ArrayList seats = new ArrayList(); 
 
-                // for (int i = 0; i < countOfRows ; i++)
-                // {
-
+               
                    SqlCommand command = new SqlCommand($"SELECT NumerMiejsca From Sale WHERE ID_Filmu ={IDMovie} ", con);
                     SqlDataReader dataReader = command.ExecuteReader();
 
@@ -273,8 +216,7 @@ namespace Kino
                     seats.Add(Convert.ToInt32(dataReader[0].ToString()));
                 }
 
-                    // MessageBox.Show(seats[i].ToString());
-                // }
+                 
 
                 return seats;
 

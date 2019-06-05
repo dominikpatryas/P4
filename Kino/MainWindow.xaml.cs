@@ -47,7 +47,6 @@ namespace Kino
 
             dwukrotnie_label.Content = "Naciśnij dwukrotnie na film, aby przejść do panelu rezerwacji.";
             loadMovies();
-            // hello_label.Visibility = Visibility.Hidden;
             ImageBrush myBrush = new ImageBrush();
             Image image = new Image();
             image.Source = new BitmapImage(
@@ -55,7 +54,6 @@ namespace Kino
                     "C:/Users/domin/Pictures/cinema1.jpg"));
             myBrush.ImageSource = image.Source;
             grid2.Background = myBrush;
-            // zalogujsie_button.Visibility = Visibility.Visible;
         }
 
         // LOGOWANIE
@@ -245,7 +243,6 @@ namespace Kino
 
         private void RezerwacjaMiejsca(Film film)
         {
-            // MessageBox.Show(film.NazwaFilmu);
         }
 
         private void ButtonAddFilm_Click(object sender, RoutedEventArgs e)
