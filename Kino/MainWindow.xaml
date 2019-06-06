@@ -11,21 +11,22 @@
         </Style>
     </Window.Resources>
 
-    <Grid Margin="0,0,-0.4,9.4"  Background="DarkSlateGray">
+    <Grid Margin="0,0,-0.4,9.4"  Background="#d5d5d1">
         <Grid x:Name="grid1" Visibility="Visible" Margin="10,0,-10,10">
             <TextBlock  HorizontalAlignment="Left" Height="0" Margin="394,125,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="2"/>
             <Grid x:Name="RLgrid" HorizontalAlignment="Left" Margin="77,214,0,-199" Width="865" RenderTransformOrigin="0.493,0.857" Height="395" VerticalAlignment="Top">
                 <Button x:Name="button_register" FontSize="20" Content="Zarejestruj&#xD;&#xA;" Height="35" HorizontalAlignment="Left" Margin="150,234,0,0" VerticalAlignment="Top" Width="131" Cursor="Hand" Click="Button_Click"/>
-                <TextBox x:Name="TEXTBOX_password2" HorizontalAlignment="Left" Height="40" Margin="72,171,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="275" FontSize="24"/>
+                <PasswordBox  x:Name="TEXTBOX_password2" HorizontalAlignment="Left" Height="40" Margin="72,171,0,0"  VerticalAlignment="Top" Width="275" FontSize="24"/>
                 <TextBox x:Name="TEXTBOX_register2" HorizontalAlignment="Left" Height="40" Margin="72,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="275" FontSize="24"/>
                 <Label Content="Rejestracja&#xA;" HorizontalAlignment="Left" Margin="72,0,0,0" VerticalAlignment="Top" FontFamily="Segoe UI Symbol" FontSize="48" Height="87" Width="275"/>
                 <Label Content="Logowanie&#xA;" HorizontalAlignment="Left" Margin="547,0,0,0" VerticalAlignment="Top" FontFamily="Segoe UI Symbol" FontSize="48" Height="87"/>
 
             </Grid>
             <StackPanel Margin="1,172,-1.4,66.8">
-                <TextBox x:Name="TEXTBOX_login1" HorizontalAlignment="Left" Height="40" Margin="600,136,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="275" FontSize="24"/>
-                <TextBox x:Name="TEXTBOX_password1" HorizontalAlignment="Left" Height="40" Margin="600,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="275" FontSize="24"/>
-                <Button x:Name="button_login" FontSize="20"  Content="Zaloguj&#xA;" HorizontalAlignment="Right" Margin="0,25,280.6,0" VerticalAlignment="Top" Width="110" Click="Button_login_Click" Height="30" Cursor="Hand"/>
+                <TextBox  x:Name="TEXTBOX_login1" HorizontalAlignment="Left" Height="40" Margin="600,136,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="275" FontSize="24"/>
+                <PasswordBox  x:Name="TEXTBOX_password1" HorizontalAlignment="Left" Height="40" Margin="600,40,0,0" VerticalAlignment="Top" Width="275" FontSize="24"/>
+
+<Button x:Name="button_login" FontSize="20"  Content="Zaloguj&#xA;" HorizontalAlignment="Right" Margin="0,25,280.6,0" VerticalAlignment="Top" Width="110" Click="Button_login_Click" Height="30" Cursor="Hand"/>
                 <CheckBox
                     x:Name="loginCheckbox"
                     Content="Jestem sprzedawcą"
@@ -34,10 +35,11 @@
                     VerticalAlignment="Top"
                     Checked="loginCheckbox_Checked" 
                     />
+                
             </StackPanel>
 
         </Grid>
-        <Grid x:Name="grid2" Visibility="Visible"  Background="AliceBlue" Margin="10,0,-10,10">
+        <Grid x:Name="grid2" Visibility="Hidden"  Background="AliceBlue" Margin="10,0,-10,10">
 
 
             <DataGrid x:Name="McDataGrid" Margin="222,57,200.6,325" AutoGenerateColumns="True" Loaded="McDataGrid_OnLoaded" MouseDoubleClick="McDataGrid_OnMouseDoubleClick"  HorizontalScrollBarVisibility="Hidden"

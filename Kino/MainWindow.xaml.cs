@@ -61,7 +61,7 @@ namespace Kino
         {
 
             var textbox_login_input = TEXTBOX_login1.Text; 
-            var textbox_password_input = TEXTBOX_password1.Text;
+            var textbox_password_input = TEXTBOX_password1.Password;
 
             if (loginCheckbox.IsChecked.Value)
             {
@@ -73,6 +73,7 @@ namespace Kino
                 loadMovies();
                 ButtonAddFilm.Visibility = Visibility.Visible;
                 zalogujsie_button.Visibility = Visibility.Hidden;
+                logout_button.Visibility = Visibility.Visible;
                 log_label.Visibility = Visibility.Visible;
                 log_label.FontSize = 25;
                 dwukrotnie_label.Visibility = Visibility.Hidden;
@@ -167,6 +168,7 @@ namespace Kino
             if (!isLogged)
             {
                 logout_button.Visibility = Visibility.Hidden;
+                ButtonAddFilm.Visibility = Visibility.Hidden;
             }
         }
 
@@ -177,7 +179,7 @@ namespace Kino
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var textbox_register_input = TEXTBOX_register2.Text;
-            var textbox_password_input = TEXTBOX_password2.Text;
+            var textbox_password_input = TEXTBOX_password2.Password;
 
             var res = databaseSql.Register(textbox_register_input, textbox_password_input);
             if (res == true)
