@@ -18,6 +18,7 @@ namespace Kino
         private readonly static string conStr =
             "Data Source=LAPTOP-HJ934Q3G;Initial Catalog=Kino;Integrated Security=True";
 
+        public bool isSeller = false;
         public Klient Login(string username, string password)
         {
             using (SqlConnection con = new SqlConnection(conStr))

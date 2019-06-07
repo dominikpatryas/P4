@@ -24,6 +24,7 @@
         <Label Content="Rok produkcji" HorizontalAlignment="Left" Margin="25,159,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.326,0.137" FontSize="20" Height="40" Width="141" FontFamily="Javanese Text"/>
         <Label Content="Opis filmu" HorizontalAlignment="Left" Margin="25,207,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.326,0.137" FontSize="20" Height="42" Width="125" FontFamily="Javanese Text"/>
         <Label Content="Data i godzina" HorizontalAlignment="Left" Margin="25,354,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.326,0.137" FontSize="20" Height="47" Width="141" FontFamily="Javanese Text"/>
+        <Label x:Name="dodano_label" Content="&#xD;&#xA;" HorizontalAlignment="Left" Margin="672,354,0,0" VerticalAlignment="Top" Width="112" Height="47"/>
 
 
 

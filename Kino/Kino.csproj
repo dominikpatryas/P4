@@ -84,7 +84,7 @@
       <DependentUpon>DodajFilm.xaml</DependentUpon>
     </Compile>
     <Compile Include="Film.cs" />
-    <Compile Include="Models\Klient.cs" />
+    <Compile Include="Klient.cs" />
     <Compile Include="Player.xaml.cs">
       <DependentUpon>Player.xaml</DependentUpon>
     </Compile>
@@ -165,6 +165,9 @@
     <Content Include="interstellar.mov" />
     <Content Include="interstellar_Trim.mp4" />
     <Content Include="themartian.mp4" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

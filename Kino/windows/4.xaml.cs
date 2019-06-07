@@ -76,16 +76,18 @@ namespace Kino.windows
         private void Rezerwacja()
         {
           
-            if (_klient != null)
+            if (_klient != null && _databaseSql.isSeller == false)
             {
-
-
-
-
                 _databaseSql.ReserveMovie(_klient, _film, arrayList);
                 score.FontSize = 25;
                 score.Foreground = Brushes.Green;
                 score.Content = "Udało Ci się zarezerwować miejsce.";
+            }
+            else if (_databaseSql.isSeller == true)
+            {
+                score.FontSize = 25;
+                score.Foreground = Brushes.Red;
+                score.Content = "Jesteś zalogowany jako sprzedawca.";
             }
             else
             {

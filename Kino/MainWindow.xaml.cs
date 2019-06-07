@@ -18,6 +18,7 @@ namespace Kino
     using System.Data.SqlClient;
     using System.Reflection;
     using System.Runtime.Remoting.Channels;
+    using System.Windows.Media.Converters;
 
     using Kino.Models;
     using Kino.windows;
@@ -35,6 +36,7 @@ namespace Kino
 
         private bool isLogged = false;
 
+        public bool isSeller = false;
         public MainWindow()
         {
             InitializeComponent();
@@ -79,7 +81,7 @@ namespace Kino
                 dwukrotnie_label.Visibility = Visibility.Hidden;
                 log_label.Foreground = Brushes.Green;
                 log_label.Margin = new Thickness(440, 430, 0, 0);
-
+                isSeller = true;
                 log_label.Content = "Zalogowano";
 
 
@@ -164,6 +166,8 @@ namespace Kino
         private void Logout()
         {
             isLogged = false;
+            isSeller = false;
+            databaseSql.isSeller = false;
             zalogujsie_button.Visibility = Visibility.Visible;
             if (!isLogged)
             {
@@ -226,6 +230,15 @@ namespace Kino
                     if (isLogged == true)
                     {
                         log_label.Visibility = Visibility.Hidden;
+                        databaseSql.isSeller = isSeller;
+                        _4 x = new _4(obj, klient, databaseSql);
+                        x.Show();
+                    }
+                   else if (isSeller == true)
+                    {
+                        isLogged = false;
+                        log_label.Visibility = Visibility.Hidden;
+                        databaseSql.isSeller = isSeller;
                         _4 x = new _4(obj, klient, databaseSql);
                         x.Show();
                     }

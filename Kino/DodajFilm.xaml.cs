@@ -35,8 +35,10 @@ namespace Kino
             var time = (date_film.Text);
 
             databaseSql.AddMovie(nazwa,gatunek,rok,opis,time);
+            dodano_label.FontSize = 25;
+            dodano_label.Foreground = Brushes.Green;
+            dodano_label.Content = "Dodano.";
 
-            
         }
     }
 }
