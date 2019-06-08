@@ -7,7 +7,7 @@
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Class="Kino.DodajFilm"
         mc:Ignorable="d"
         Title="DodajFilm" Height="450" Width="800">
-    <Grid>
+    <Grid x:Name ="Grid">
         <TextBox x:Name="textbox_nazwa"  HorizontalAlignment="Left" Height="40" Margin="189,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" FontSize="20"/>
         <TextBox x:Name="textbox_gatunek" HorizontalAlignment="Left" Height="40" Margin="189,100,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="300" FontSize="20"/>
         <TextBox x:Name="textbox_rok" HorizontalAlignment="Left" Height="40" Margin="189,159,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" FontSize="20"/>
@@ -18,12 +18,12 @@
         <xctk:DateTimePicker x:Name="date_film" HorizontalAlignment="Left" Format="Custom"  FormatString="MM-dd-yy HH:mm"
                              TimeFormat="Custom"
                              TimeFormatString="HH:mm" Margin="189,363,0,0" VerticalAlignment="Top" Height="31" Width="300" FontSize="15"/>
-        <Button x:Name="button_dodajfilm" Content="Dodaj" HorizontalAlignment="Left" Margin="549,363,0,0" VerticalAlignment="Top" Width="98" Click="Button_dodajfilm_Click" Height="31" FontFamily="Corbel" FontSize="18"/>
-        <Label Content="Tytuł" HorizontalAlignment="Left" Margin="25,36,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.326,0.137" FontSize="20" Height="40" Width="101" FontFamily="Javanese Text"/>
-        <Label Content="Gatunek " HorizontalAlignment="Left" Margin="25,100,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.326,0.137" FontSize="20" Height="40" Width="101" FontFamily="Javanese Text"/>
-        <Label Content="Rok produkcji" HorizontalAlignment="Left" Margin="25,159,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.326,0.137" FontSize="20" Height="40" Width="141" FontFamily="Javanese Text"/>
-        <Label Content="Opis filmu" HorizontalAlignment="Left" Margin="25,207,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.326,0.137" FontSize="20" Height="42" Width="125" FontFamily="Javanese Text"/>
-        <Label Content="Data i godzina" HorizontalAlignment="Left" Margin="25,354,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.326,0.137" FontSize="20" Height="47" Width="141" FontFamily="Javanese Text"/>
+        <Button x:Name="button_dodajfilm" Content="Dodaj" HorizontalAlignment="Left" Margin="541,363,0,0" VerticalAlignment="Top" Width="103" Click="Button_dodajfilm_Click" Height="31" FontFamily="Corbel" FontSize="18"/>
+        <Label Content="Tytuł" HorizontalAlignment="Left" Margin="25,36,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.326,0.137" FontSize="20" Height="40" Width="101" FontFamily="Javanese Text" Foreground="White"/>
+        <Label Content="Gatunek " HorizontalAlignment="Left" Margin="25,100,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.326,0.137" FontSize="20" Height="40" Width="101" FontFamily="Javanese Text" Foreground="White"/>
+        <Label Content="Rok produkcji" HorizontalAlignment="Left" Margin="25,159,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.326,0.137" FontSize="20" Height="40" Width="141" FontFamily="Javanese Text" Foreground="White"/>
+        <Label Content="Opis filmu" HorizontalAlignment="Left" Margin="25,207,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.326,0.137" FontSize="20" Height="42" Width="125" FontFamily="Javanese Text" Foreground="White"/>
+        <Label Content="Data i godzina" HorizontalAlignment="Left" Margin="25,354,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.326,0.137" FontSize="20" Height="47" Width="141" FontFamily="Javanese Text" Foreground="White"/>
         <Label x:Name="dodano_label" Content="&#xD;&#xA;" HorizontalAlignment="Left" Margin="672,354,0,0" VerticalAlignment="Top" Width="112" Height="47"/>
 
 

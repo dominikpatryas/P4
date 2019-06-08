@@ -24,6 +24,13 @@ namespace Kino
         public DodajFilm()
         {
             InitializeComponent();
+            ImageBrush myBrush2 = new ImageBrush();
+            Image image2 = new Image();
+            image2.Source = new BitmapImage(
+                new Uri(
+                    "C:/Users/domin/Desktop/Projekty VS/Kino/Kino/dodaj.jpg"));
+            myBrush2.ImageSource = image2.Source;
+            Grid.Background = myBrush2;
         }
 
         private void Button_dodajfilm_Click(object sender, RoutedEventArgs e)

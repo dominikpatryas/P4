@@ -56,6 +56,15 @@ namespace Kino
                     "C:/Users/domin/Pictures/cinema1.jpg"));
             myBrush.ImageSource = image.Source;
             grid2.Background = myBrush;
+
+
+            ImageBrush myBrush2 = new ImageBrush();
+            Image image2 = new Image();
+            image2.Source = new BitmapImage(
+                new Uri(
+                    "C:/Users/domin/Desktop/Projekty VS/Kino/Kino/background.jpg"));
+            myBrush2.ImageSource = image2.Source;
+            grid1.Background = myBrush2;
         }
 
         // LOGOWANIE

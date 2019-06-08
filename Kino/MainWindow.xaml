@@ -11,15 +11,15 @@
         </Style>
     </Window.Resources>
 
-    <Grid Margin="0,0,-0.4,9.4"  Background="#d5d5d1">
+    <Grid Margin="0,0,-0.4,9.4" >
         <Grid x:Name="grid1" Visibility="Visible" Margin="10,0,-10,10">
             <TextBlock  HorizontalAlignment="Left" Height="0" Margin="394,125,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="2"/>
             <Grid x:Name="RLgrid" HorizontalAlignment="Left" Margin="77,214,0,-199" Width="865" RenderTransformOrigin="0.493,0.857" Height="395" VerticalAlignment="Top">
                 <Button x:Name="button_register" FontSize="20" Content="Zarejestruj&#xD;&#xA;" Height="35" HorizontalAlignment="Left" Margin="150,234,0,0" VerticalAlignment="Top" Width="131" Cursor="Hand" Click="Button_Click"/>
                 <PasswordBox  x:Name="TEXTBOX_password2" HorizontalAlignment="Left" Height="40" Margin="72,171,0,0"  VerticalAlignment="Top" Width="275" FontSize="24"/>
                 <TextBox x:Name="TEXTBOX_register2" HorizontalAlignment="Left" Height="40" Margin="72,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="275" FontSize="24"/>
-                <Label Content="Rejestracja&#xA;" HorizontalAlignment="Left" Margin="72,0,0,0" VerticalAlignment="Top" FontFamily="Segoe UI Symbol" FontSize="48" Height="87" Width="275"/>
-                <Label Content="Logowanie&#xA;" HorizontalAlignment="Left" Margin="547,0,0,0" VerticalAlignment="Top" FontFamily="Segoe UI Symbol" FontSize="48" Height="87"/>
+                <Label Content="Rejestracja&#xA;" HorizontalAlignment="Left" Margin="72,0,0,0" VerticalAlignment="Top" FontFamily="Segoe UI Symbol" FontSize="48" Height="87" Width="275" Foreground="White"/>
+                <Label Content="Logowanie&#xA;" HorizontalAlignment="Left" Margin="547,0,0,0" VerticalAlignment="Top" FontFamily="Segoe UI Symbol" FontSize="48" Height="87" Foreground="White"/>
 
             </Grid>
             <StackPanel Margin="1,172,-1.4,66.8">
@@ -33,7 +33,7 @@
                     HorizontalAlignment="Left"
                     Margin="750,-25,0,0"
                     VerticalAlignment="Top"
-                    Checked="loginCheckbox_Checked" 
+                    Checked="loginCheckbox_Checked" Foreground="White" 
                     />
                 
             </StackPanel>
@@ -76,7 +76,7 @@
                     </DataTemplate>
                 </DataGrid.RowDetailsTemplate>
             </DataGrid>
-            <Button x:Name="ButtonAddFilm" Content="Dodaj film" HorizontalAlignment="Left" Margin="817,61,0,0" VerticalAlignment="Top" Width="106" Height="36" Click="ButtonAddFilm_Click"/>
+            <Button x:Name="ButtonAddFilm" Content="Dodaj film" HorizontalAlignment="Left" Margin="817,103,0,0" VerticalAlignment="Top" Width="106" Height="36" Click="ButtonAddFilm_Click"/>
             <Button x:Name="RefreshFilm" Content="Odśwież" HorizontalAlignment="Left" Margin="817,143,0,0" VerticalAlignment="Top" Width="106" Click="RefreshFilm_Click" Height="36"/>
             <Button x:Name="zalogujsie_button" Visibility="Visible" Content="Zaloguj się" HorizontalAlignment="Left" Margin="817,102,0,0" VerticalAlignment="Top" Width="106" Click="Zalogujsie_button_Click_1" Height="36"/>
             <Label x:Name="log_label" Content="&#xD;&#xA;" HorizontalAlignment="Left" Height="50" Margin="440,430,0,0" VerticalAlignment="Top" Width="510"/>
