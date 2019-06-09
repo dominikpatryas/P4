@@ -105,7 +105,6 @@ namespace Kino.windows
             {
                 temp.Background = Close_button.Background;
                 TotalValue -= OneTicketValue;
-                Lb1.Content = $"{TotalValue} $";
             }
         }
 

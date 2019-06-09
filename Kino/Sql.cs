@@ -147,8 +147,8 @@ namespace Kino
 
                 string q2 = $"select ID From Film where NazwaFilmu='{nazwa}'";
                 var id_movie = (int)new SqlCommand(q2, con).ExecuteScalar();
-                string q3 = $"Insert into Sale(ID_filmu, NazwaFilmu) Values({id_movie}, '{nazwa}')";
-                var q3_query = (int)new SqlCommand(q3, con).ExecuteNonQuery();
+                // string q3 = $"Insert into Sale(ID_filmu, NazwaFilmu) Values({id_movie}, '{nazwa}')";
+                // var q3_query = (int)new SqlCommand(q3, con).ExecuteNonQuery();
 
             }
         }
@@ -211,13 +211,13 @@ namespace Kino
                
                    SqlCommand command = new SqlCommand($"SELECT NumerMiejsca From Sale WHERE ID_Filmu ={IDMovie} ", con);
                     SqlDataReader dataReader = command.ExecuteReader();
+               
+                    while (dataReader.Read())
+                    {
+                            seats.Add(Convert.ToInt32(dataReader[0].ToString()));
+                    }
 
-                while (dataReader.Read())
-                {
-                    seats.Add(Convert.ToInt32(dataReader[0].ToString()));
-                }
 
-                 
 
                 return seats;
 
