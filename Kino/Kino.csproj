@@ -165,7 +165,6 @@
     <Resource Include="im.jpg" />
     <Resource Include="background.jpg" />
     <Resource Include="dodaj.jpg" />
-    <Content Include="interstellar.mov" />
     <Content Include="interstellar_Trim.mp4" />
     <Content Include="themartian.mp4" />
   </ItemGroup>

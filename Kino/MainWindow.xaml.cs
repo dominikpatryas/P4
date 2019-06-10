@@ -100,7 +100,14 @@ namespace Kino
             if (!loginCheckbox.IsChecked.Value)
             {
                 var res = databaseSql.Login(textbox_login_input, textbox_password_input);
-
+                if (res == null)
+                {
+                    login_message.Visibility = Visibility.Visible;
+                    login_message.FontSize = 25;
+                    login_message.Foreground = Brushes.Red;
+                    // login_message.Margin = new Thickness(20, 0, -14.8, 0);
+                    login_message.Content = "Niepoprawny login lub hasło";
+                }
                 if (res != null)
                 {
                     grid1.Visibility = Visibility.Hidden;
@@ -108,6 +115,7 @@ namespace Kino
                     ButtonAddFilm.Visibility = Visibility.Hidden;
                     klient = res;
                     isLogged = true;
+                    login_message.Visibility = Visibility.Hidden;
 
                     if (isLogged)
                     {

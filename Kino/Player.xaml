@@ -6,9 +6,9 @@
         xmlns:local="clr-namespace:Kino"
         mc:Ignorable="d" ResizeMode="CanMinimize"
         Title="Cinema" Height="450" Width="800">
-    <Grid>
-        <MediaElement x:Name="mediaplayer"  LoadedBehavior="Play" HorizontalAlignment="Left" Height="303" VerticalAlignment="Top" Width="556" Margin="123,80,0,0"/>
-        <Label Content="Nazwa Filmu" FontSize="32" Name="nazwa_trailer" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="104,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.24,0.059" Height="50" Width="575"/>
+    <Grid x:Name="gridplayer">
+        <MediaElement x:Name="mediaplayer"  LoadedBehavior="Play" HorizontalAlignment="Left" Height="214" VerticalAlignment="Top" Width="426" Margin="216,126,0,0"/>
+        <Label Content="Nazwa Filmu" FontSize="32" Name="nazwa_trailer" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="106,36,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.24,0.059" Height="50" Width="575" Foreground="White" FontWeight="Bold"/>
 
     </Grid>
 </Window>

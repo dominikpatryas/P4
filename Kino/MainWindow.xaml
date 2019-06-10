@@ -26,7 +26,7 @@
                 <TextBox  x:Name="TEXTBOX_login1" HorizontalAlignment="Left" Height="40" Margin="600,136,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="275" FontSize="24"/>
                 <PasswordBox  x:Name="TEXTBOX_password1" HorizontalAlignment="Left" Height="40" Margin="600,40,0,0" VerticalAlignment="Top" Width="275" FontSize="24"/>
 
-<Button x:Name="button_login" FontSize="20"  Content="Zaloguj&#xA;" HorizontalAlignment="Right" Margin="0,25,280.6,0" VerticalAlignment="Top" Width="110" Click="Button_login_Click" Height="30" Cursor="Hand"/>
+                <Button x:Name="button_login" FontSize="20"  Content="Zaloguj&#xA;" HorizontalAlignment="Right" Margin="0,25,280.6,0" VerticalAlignment="Top" Width="110" Click="Button_login_Click" Height="30" Cursor="Hand"/>
                 <CheckBox
                     x:Name="loginCheckbox"
                     Content="Jestem sprzedawcą"
@@ -35,7 +35,8 @@
                     VerticalAlignment="Top"
                     Checked="loginCheckbox_Checked" Foreground="White" 
                     />
-                
+                <Label x:Name="login_message" Content="" Margin="608,40,-0.4,0" Height="83" Visibility="Hidden"/>
+
             </StackPanel>
 
         </Grid>

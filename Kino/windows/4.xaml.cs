@@ -45,7 +45,13 @@ namespace Kino.windows
         public _4(Film film, Klient klient, Sql databaseSql)
         {
             InitializeComponent();
-
+            ImageBrush myBrush = new ImageBrush();
+            Image image = new Image();
+            image.Source = new BitmapImage(
+                new Uri(
+                    "C:/Users/domin/Desktop/miejsca.jpg"));
+            myBrush.ImageSource = image.Source;
+            siedzenia.Background = myBrush;
 
             _film = film;
             _klient = klient;

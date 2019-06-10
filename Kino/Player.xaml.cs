@@ -22,6 +22,13 @@ namespace Kino
         public Player()
         {
             InitializeComponent();
+            ImageBrush myBrush = new ImageBrush();
+            Image image = new Image();
+            image.Source = new BitmapImage(
+                new Uri(
+                    "C:/Users/domin/Desktop/cinemawatch.jpg"));
+            myBrush.ImageSource = image.Source;
+            gridplayer.Background = myBrush;
         }
 
         public void watchTrailer(int _IDFilmu, string _NazwaFilmu)
